@@ -20,7 +20,8 @@ class Display extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('Vdisplay');
-                //echo json_encode($this->db->get('antrian')->result_array());
+	  $data['page'] = 'Vdisplay';
+      $data['content'] = '';
+      $this->load->view('Vmain', $data);
 	}
 }

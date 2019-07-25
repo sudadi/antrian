@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Loket extends CI_Controller {
+class Tiket extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -11,7 +11,7 @@ class Loket extends CI_Controller {
 	 *	- or -
 	 * 		http://example.com/index.php/welcome/index
 	 *	- or -
-	 * Since this controller is set as the default controller in
+	 * Since this controller is set as the default con  troller in
 	 * config/routes.php, it's displayed at http://example.com/
 	 *
 	 * So any other public methods not prefixed with an underscore will
@@ -19,10 +19,17 @@ class Loket extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
   
-	public function index()
+  function __construct() {
+    parent:: __construct();
+    $this->load->model('Mtiket');
+  }
+  
+  public function index()
 	{
-      $data['page'] = 'loket/Vloket';
-      $data['content']['nav'] = true;
+      $data['page'] = 'Vtiket';
+      $data['nav']= false;
+      $data['content']['nomor'] = $this->Mtiket->getnumber() + 1;
+      //echo $data['content']['nomor']; die();
       $this->load->view('Vmain', $data);
 	}
 }

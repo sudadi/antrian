@@ -20,7 +20,8 @@ class Main extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('Vstart');
-                //echo json_encode($this->db->get('antrian')->result_array());
+      $data['page'] = 'Vstart';
+      $data['content'] = '';
+      $this->load->view('Vmain', $data);
 	}
 }
