@@ -47,3 +47,51 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </div>
 </div>
+
+<script>
+  $(function(){
+		var tmp_loket=0;
+		setInterval(function() {
+			$.post("../apps/monitoring-daemon.php", function( data ){
+				if(tmp_loket!=data['jumlah_loket']){
+					$(".col-md-3").remove();
+					tmp_loket=0;
+				}
+				if (tmp_loket==0) {
+					for (var i = 1; i<= data['jumlah_loket']; i++) {
+						loket = '<div class="col-md-3">'+
+									'<div class="'+ i +
+									 ' jumbotron" style="padding-top:20px;padding-bottom:20px;">'+
+										'<h1> '+data["init_counter"][i]+' </h1>'+
+										'<button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-credit-card">&nbsp;</span>LOKET '+ i +'</button>'+
+									'</div>'+
+								'</div>';
+						$(".loket").append(loket);
+					}
+
+					tmp_loket = data['jumlah_loket'];
+				}
+				for (var i = 1; i <= data['jumlah_loket']; i++) { 					
+					if (data["counter"]==i) {
+						$("."+i+" h1").html(data["next"]);
+					}
+				}
+				if (data["next"]) {
+					var angka = data["next"];
+					for (var i = 0 ; i < angka.toString().length; i++) {
+						$(".audio").append('<audio id="suarabel'+i+'" src="../audio/new/'+angka.toString().substr(i,1)+'.MP3" ></audio>');
+					};
+					mulai(data["next"],data["counter"]);
+				}else{
+					for (var i = 1; i <= data['jumlah_loket']; i++) { 					
+						if (data["counter"]==i) {
+							$("."+i+" h1").html(data["next"]);
+						}
+					}
+				};
+
+			}, "json"); 
+		}, 5000);
+		//change
+	});
+</script>

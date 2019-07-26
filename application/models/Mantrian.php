@@ -13,14 +13,17 @@ class Mantrian extends CI_Model {
     
   }
   
-  function getnumber() {
-    $this->db->select('urut');
+  function getnumber($where ="tgl = date('now')") {
     $this->db->order_by('urut', 'desc');
-    return $this->db->get_where("antrian", "tgl = date('now')", 1)->row();
+    return $this->db->get_where("antrian", $where, 1)->row();
   }
   
   function addnumber() {
-    $newnumber = $this->getnumber()->urut +1;
+    if(!$this->getnumber()){
+      $newnumber = 1;
+    } else {
+      $newnumber = $this->getnumber()->urut+1;
+    }
     return $this->db->insert('antrian', ['tgl'=> date('Y-m-d'),'urut'=>$newnumber,'status'=>0]);
   }
 }

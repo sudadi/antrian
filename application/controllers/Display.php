@@ -18,10 +18,24 @@ class Display extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+  
+  function __construct() {
+    parent:: __construct();
+    $this->load->model('Mantrian');
+  }
+  
+  public function index()
 	{
 	  $data['page'] = 'Vdisplay';
+      $data['nav']= FALSE;
       $data['content'] = '';
       $this->load->view('Vmain', $data);
-	}
+  }
+    
+  public function xdispnum() {
+    if ($antrian = $this->Mantrian->getnumber(['tgl'=> date('Y-m-d'), 'status'=>1])) {
+      echo json_encode($antrian);
+    } 
+    
+  }
 }

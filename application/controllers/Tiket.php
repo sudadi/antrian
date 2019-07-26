@@ -28,7 +28,10 @@ class Tiket extends CI_Controller {
 	{
       $data['page'] = 'Vtiket';
       $data['nav']= false;
-      $data['content'] = $this->Mantrian->getnumber();
+      if (!($number = $this->Mantrian->getnumber())) {
+        $number =['urut'=>0];
+      } 
+      $data['content'] = $number;
       //echo $data['content']['nomor']; die();
       $this->load->view('Vmain', $data);
 	}
