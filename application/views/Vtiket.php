@@ -14,7 +14,7 @@
       <div class="card card-signin my-5">
         <div class="card-header text-center" style="font-size: 40px;font-weight: bold;width: 100%;">Tiket Antrian RSOS</div>
         <div class="card-body">          
-          <div id="loket1" class="text-center" style="font-size: 200px;font-weight: bold;width: 100%;"><?=$nomor;?></div>
+          <div id="loket1" class="text-center nomor" style="font-size: 200px;font-weight: bold;width: 100%;"><?=$urut;?></div>
         </div>
         <div class="card-footer">
           <button id="ambil" class="btn btn-lg btn-warning btn-block text-uppercase"><i class="fas fa-ticket-alt fa-4x mr-2"></i><br> Ambil Tiket</button>
@@ -41,7 +41,7 @@
           <td><strong>NOMOR ANTRIAN</strong></td>
         </tr>
         <tr>
-          <td style="font-size: 100px;"><?=$nomor;?></td>          
+          <td class="nomor" style="font-size: 100px;"><?=$urut;?></td>          
         </tr>
       </tbody>
       <tfoot>
@@ -59,6 +59,20 @@
 
 <script>
   $('#ambil').on("click", function () {
-      $('.tiket').printThis();
+    $.ajax({
+      url : "<?php echo site_url('tiket/xgetnomor/')?>",
+      type: "GET",
+      dataType: "JSON",
+      success: function(data)
+      {
+        $(".nomor").html(data.urut);
+        $('.tiket').printThis();
+      },
+      error: function (jqXHR, textStatus, errorThrown)
+      {
+          $("#spinner").hide();
+          alert('Error : Tidak bisa ambil nomor..!');
+      }
     });
+  });
 </script>

@@ -21,15 +21,23 @@ class Tiket extends CI_Controller {
   
   function __construct() {
     parent:: __construct();
-    $this->load->model('Mtiket');
+    $this->load->model('Mantrian');
   }
   
   public function index()
 	{
       $data['page'] = 'Vtiket';
       $data['nav']= false;
-      $data['content']['nomor'] = $this->Mtiket->getnumber() + 1;
+      $data['content'] = $this->Mantrian->getnumber();
       //echo $data['content']['nomor']; die();
       $this->load->view('Vmain', $data);
 	}
+    
+    public function xgetnomor() {
+      if ($this->Mantrian->addnumber()){
+        echo json_encode($this->Mantrian->getnumber());
+      } else {
+        return FALSE;
+      }
+    }
 }
