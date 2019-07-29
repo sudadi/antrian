@@ -26,4 +26,9 @@ class Mantrian extends CI_Model {
     }
     return $this->db->insert('antrian', ['tgl'=> date('Y-m-d'),'urut'=>$newnumber,'status'=>0]);
   }
+  
+  function updnumber($set, $where) {
+    $this->db->update('antrian', $set, $where);
+    return $this->db->affected_rows();
+  }
 }

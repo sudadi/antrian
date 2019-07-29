@@ -47,51 +47,93 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </div>
 </div>
-
+<audio src="<?=base_url('assets/audio/');?>awal.MP3" id="sound-1" controls></audio>
+<audio src="<?=base_url('assets/audio/');?>tiga.MP3" controls id="sound-2"></audio>
 <script>
-  $(function(){
-		var tmp_loket=0;
-		setInterval(function() {
-			$.post("../apps/monitoring-daemon.php", function( data ){
-				if(tmp_loket!=data['jumlah_loket']){
-					$(".col-md-3").remove();
-					tmp_loket=0;
-				}
-				if (tmp_loket==0) {
-					for (var i = 1; i<= data['jumlah_loket']; i++) {
-						loket = '<div class="col-md-3">'+
-									'<div class="'+ i +
-									 ' jumbotron" style="padding-top:20px;padding-bottom:20px;">'+
-										'<h1> '+data["init_counter"][i]+' </h1>'+
-										'<button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-credit-card">&nbsp;</span>LOKET '+ i +'</button>'+
-									'</div>'+
-								'</div>';
-						$(".loket").append(loket);
-					}
-
-					tmp_loket = data['jumlah_loket'];
-				}
-				for (var i = 1; i <= data['jumlah_loket']; i++) { 					
-					if (data["counter"]==i) {
-						$("."+i+" h1").html(data["next"]);
-					}
-				}
-				if (data["next"]) {
-					var angka = data["next"];
-					for (var i = 0 ; i < angka.toString().length; i++) {
-						$(".audio").append('<audio id="suarabel'+i+'" src="../audio/new/'+angka.toString().substr(i,1)+'.MP3" ></audio>');
-					};
-					mulai(data["next"],data["counter"]);
-				}else{
-					for (var i = 1; i <= data['jumlah_loket']; i++) { 					
-						if (data["counter"]==i) {
-							$("."+i+" h1").html(data["next"]);
-						}
-					}
-				};
-
-			}, "json"); 
-		}, 5000);
-		//change
-	});
+  $(function() {
+      var audioarr = new Array();
+    
+      $.ajax({
+      url : "<?php echo site_url('display/xdispnum/')?>",
+      type: "GET",
+      dataType: "JSON",
+      success: function(data)
+      {
+        if (data.loket === 1) {
+          $("#loket1").html(data.urut);
+        } else {
+          $("#loket2").html(data.urut);
+        }
+        
+        var textarr = data.terbilang.split(" ");
+        console.log(textarr);
+        for(var i=0; i < textarr.length; i++) {
+          
+          audioarr[i] = new Audio("<?=base_url('assets/audio/');?>"+textarr[i]+".MP3");   
+          
+        };
+        audioarr[1].play();
+        
+        
+        
+      },
+      error: function (jqXHR, textStatus, errorThrown)
+      {
+          
+      }
+    });
+    
+    function playSnd() {
+    var i=0;
+    i++;
+    if (i == audioarr.length) return;
+    audioarr[i].addEventListener('ended', playSnd);
+    audioarr[i].play();
+    }
+  });
+//  $(function(){
+//		var tmp_loket=0;
+//		setInterval(function() {
+//			$.post("../apps/monitoring-daemon.php", function( data ){
+//				if(tmp_loket!=data['jumlah_loket']){
+//					$(".col-md-3").remove();
+//					tmp_loket=0;
+//				}
+//				if (tmp_loket==0) {
+//					for (var i = 1; i<= data['jumlah_loket']; i++) {
+//						loket = '<div class="col-md-3">'+
+//									'<div class="'+ i +
+//									 ' jumbotron" style="padding-top:20px;padding-bottom:20px;">'+
+//										'<h1> '+data["init_counter"][i]+' </h1>'+
+//										'<button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-credit-card">&nbsp;</span>LOKET '+ i +'</button>'+
+//									'</div>'+
+//								'</div>';
+//						$(".loket").append(loket);
+//					}
+//
+//					tmp_loket = data['jumlah_loket'];
+//				}
+//				for (var i = 1; i <= data['jumlah_loket']; i++) { 					
+//					if (data["counter"]==i) {
+//						$("."+i+" h1").html(data["next"]);
+//					}
+//				}
+//				if (data["next"]) {
+//					var angka = data["next"];
+//					for (var i = 0 ; i < angka.toString().length; i++) {
+//						$(".audio").append('<audio id="suarabel'+i+'" src="../audio/new/'+angka.toString().substr(i,1)+'.MP3" ></audio>');
+//					};
+//					mulai(data["next"],data["counter"]);
+//				}else{
+//					for (var i = 1; i <= data['jumlah_loket']; i++) { 					
+//						if (data["counter"]==i) {
+//							$("."+i+" h1").html(data["next"]);
+//						}
+//					}
+//				};
+//
+//			}, "json"); 
+//		}, 5000);
+//		//change
+//	});
 </script>

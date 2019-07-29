@@ -21,7 +21,9 @@ class Display extends CI_Controller {
   
   function __construct() {
     parent:: __construct();
+    $this->load->helper('Terbilang');
     $this->load->model('Mantrian');
+    
   }
   
   public function index()
@@ -34,7 +36,22 @@ class Display extends CI_Controller {
     
   public function xdispnum() {
     if ($antrian = $this->Mantrian->getnumber(['tgl'=> date('Y-m-d'), 'status'=>1])) {
+      $terbilang = trim(penyebut($antrian->urut));
+      switch ($antrian->loket) {
+        case 2:
+          $loket = 'loket2';
+          break;
+
+        default:
+          $loket = 'loket1';
+          break;
+      }
+      $antrian->terbilang = 'awal '.$terbilang.' '.$loket;
       echo json_encode($antrian);
+      
+//      if ($this->Mantrian->updnum('status=1',['id'=>$antrian->id])) {
+//        echo json_encode($antrian);
+//      }
     } 
     
   }
