@@ -20,7 +20,7 @@ if ( ! function_exists('Terbilang'))
 		if ($nilai < 12) {
 			$temp = " ". $huruf[$nilai];
 		} else if ($nilai <20) {
-			$temp = penyebut($nilai - 10). " belas";
+			$temp = penyebut($nilai - 10). "belas";
 		} else if ($nilai < 100) {
 			$temp = penyebut($nilai/10)." puluh". penyebut($nilai % 10);
 		} else if ($nilai < 200) {

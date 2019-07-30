@@ -46,7 +46,7 @@ class Display extends CI_Controller {
           $loket = 'loket1';
           break;
       }
-      $antrian->terbilang = 'awal '.$terbilang.' '.$loket;
+      $antrian->terbilang = 'alertin nomor '.$terbilang.' '.$loket.' alertout';
       echo json_encode($antrian);
       
 //      if ($this->Mantrian->updnum('status=1',['id'=>$antrian->id])) {
