@@ -21,6 +21,7 @@ class Main extends CI_Controller {
 	public function index()
 	{
       $data['page'] = 'Vstart';
+      $data['nav'] = FALSE;
       $data['content'] = '';
       $this->load->view('Vmain', $data);
 	}

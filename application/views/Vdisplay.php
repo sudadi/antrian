@@ -49,12 +49,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <script>
   $(function() {
-    var audioarr;
+    var audioarr = new Array();
     var x = -1;
     
     function playSnd() {
       x++;
-      if (x == audioarr.length) return;
+      if (x == audioarr.length) {
+        loopdata();
+        return;
+      }
       //on ended play next sampai semua audio di putar
       audioarr[x].addEventListener('ended', playSnd);
       audioarr[x].play();
@@ -79,13 +82,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           console.log(textarr);
           for(var i=0; i < textarr.length; i++) {
 
-            audioarr[i] = new Audio("<?=base_url('assets/audio/');?>"+textarr[i]+".mp3");   
-
+            audioarr[i] = new Audio("<?=base_url('assets/audio/');?>"+textarr[i]+".ogg");   
+            
           };     
           //jika success mainkan audio dan set loop interval lebih lama
           playSnd();          
-          setTimeout(loopdata, 9000);
-
+          //setTimeout(loopdata, 13000);
         },
         error: function (jqXHR, textStatus, errorThrown)
         {

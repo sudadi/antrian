@@ -21,8 +21,9 @@ class Loket extends CI_Controller {
   
 	public function index()
 	{
-      $data['page'] = 'loket/Vloket';
-      $data['content']['nav'] = true;
+      $data['page'] = 'Vloket';
+      $data['nav'] = true;
+      $data['content'] = '';
       $this->load->view('Vmain', $data);
 	}
 }
