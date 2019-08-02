@@ -35,7 +35,7 @@ class Display extends CI_Controller {
   }
     
   public function xdispnum() {
-    if ($antrian = $this->Mantrian->getnumber(['tgl'=> date('Y-m-d'), 'status'=>1])) {
+    if ($antrian = $this->Mantrian->getnumber('asc', ['tgl'=> date('Y-m-d'), 'status'=>1])) {
       $terbilang = trim(penyebut($antrian->urut));
       switch ($antrian->loket) {
         case 2:

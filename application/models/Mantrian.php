@@ -13,8 +13,8 @@ class Mantrian extends CI_Model {
     
   }
   
-  function getnumber($where ="tgl = date('now')") {
-    $this->db->order_by('urut', 'asc');
+  function getnumber($order='desc', $where ="tgl = date('now')") {
+    $this->db->order_by('urut', $order);
     return $this->db->get_where("antrian", $where, 1)->row();
   }
   

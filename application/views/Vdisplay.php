@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="d-none d-xl-block col-xl-1"></div>
     <div class="col-8 col-xl-7">
       <h2 class="text-white text-center">Informasi Antrian RSOS</h2>
-      <video src="<?php echo base_url();?>assets/video/videoplayback.mp4" width="100%" muted loop controls autoplay class="img-fluid rounded"></video>
+      <video src="<?php echo base_url();?>assets/video/Profil-1.mp4" width="100%" muted loop controls autoplay class="img-fluid rounded"></video>
       <div class="card">
         <div class="card-body">
         <?php echo date('l').' '.date('d F Y').' '.date('H:m:i');?>
@@ -72,10 +72,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         success: function(data)
         {          
           x = -1;
-          if (data.loket === 1) {
-            $("#loket1").html(data.urut);
-          } else {
+          if (data.loket === 2) {
             $("#loket2").html(data.urut);
+          } else {
+            $("#loket1").html(data.urut);
           }
 
           var textarr = data.terbilang.split(" ");

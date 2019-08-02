@@ -12,62 +12,133 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="row">
     <div class="col-md-4">
       <!-- Search Widget -->
-      <div class="card my-4 mh-100" style="height:300px">
+      <div class="card my-4 mh-100" style="min-height: 300px">
         <h5 class="card-header">Antrian</h5>
-        <div class="card-body display-1 text-center">
-          1/202
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 px-1 py-4 my-auto">      
+              <div class="card bg-success m-auto mh-100 display-3  text-center">
+                305
+              </div>
+            </div>
+            <div class="col-md-6 px-1 py-4 my-auto">
+              <div class="card bg-warning m-auto mh-100 display-3 text-center" >
+                305
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-footer">
-          
+        <div class="card-footer text-center">
+          <button class="btn btn-primary">Panggil</button>
         </div>
       </div>
     </div>  
     <div class="col-md-4">
       <!-- Categories Widget -->
-      <div class="card my-4 mh-100" style="height:300px">
-        <h5 class="card-header">Categories</h5>
+      <div class="card my-4 mh-100" style="min-height: 300px">
+        <h5 class="card-header">Dipanggil</h5>
         <div class="card-body">
-          <div class="row">
-            <div class="col-lg-6">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">Web Design</a>
-                </li>
-                <li>
-                  <a href="#">HTML</a>
-                </li>
-                <li>
-                  <a href="#">Freebies</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-6">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">JavaScript</a>
-                </li>
-                <li>
-                  <a href="#">CSS</a>
-                </li>
-                <li>
-                  <a href="#">Tutorials</a>
-                </li>
-              </ul>
+          <div class="row d-flex justify-content-center">
+           <div class="col-md-10 px-1 py-4 ">      
+              <div class="card bg-success m-auto mh-100 display-3 text-center">
+                305
+              </div>
             </div>
           </div>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-primary">Panggil</button>
         </div>
       </div>
     </div>  
       <!-- Side Widget -->
     <div class="col-md-4">
       <div class="card my-4 mh-100" style="height:300px">
-        <h5 class="card-header">Side Widget</h5>
-        <div class="card-body">
-          You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+        <h5 class="card-header">Dilewati</h5>
+        <div class="card-body table-responsive">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td class="display-4">
+                  302
+                </td>
+                <td class="">
+                  <button class="btn btn-success btn-sm m-1"><i class="fas fa-retweet"></i> Ulang</button>
+                  <button class="btn btn-danger btn-sm m-1"><i class="fas fa-trash"></i> Hapus</button>
+                </td>
+              <tr>
+                <td class="display-4">
+                  302
+                </td>
+                <td>
+                  <button class="btn btn-success btn-sm m-1"><i class="fas fa-retweet"></i> Ulang</button>
+                  <button class="btn btn-danger btn-sm m-1"><i class="fas fa-trash"></i> Hapus</button>
+                </td>
+              <tr>
+                <td class="display-4">
+                  302
+                </td>
+                <td>
+                  <button class="btn btn-success btn-sm m-1"><i class="fas fa-retweet"></i> Ulang</button>
+                  <button class="btn btn-danger btn-sm m-1"><i class="fas fa-trash"></i> Hapus</button>
+                </td>
+              <tr>
+                <td class="display-4">
+                  302
+                </td>
+                <td>
+                  <button class="btn btn-success btn-sm m-1"><i class="fas fa-retweet"></i> Ulang</button>
+                  <button class="btn btn-danger btn-sm m-1"><i class="fas fa-trash"></i> Hapus</button>
+                </td>
+              <tr>
+                <td class="display-4">
+                  302
+                </td>
+                <td>
+                  <button class="btn btn-success btn-sm m-1"><i class="fas fa-retweet"></i> Ulang</button>
+                  <button class="btn btn-danger btn-sm m-1"><i class="fas fa-trash"></i> Hapus</button>
+                </td>
+              <tr>
+                <td class="display-4">
+                  302
+                </td>
+                <td>
+                  <button class="btn btn-success btn-sm m-1"><i class="fas fa-retweet"></i> Ulang</button>
+                  <button class="btn btn-danger btn-sm m-1"><i class="fas fa-trash"></i> Hapus</button>
+                </td>
+              <tr>
+                <td class="display-4">
+                  302
+                </td>
+                <td>
+                  <button class="btn btn-success btn-sm m-1"><i class="fas fa-retweet"></i> Ulang</button>
+                  <button class="btn btn-danger btn-sm m-1"><i class="fas fa-trash"></i> Hapus</button>
+                </td>
+              <tr>
+                <td class="display-4">
+                  302
+                </td>
+                <td>
+                  <button class="btn btn-success btn-sm m-1"><i class="fas fa-retweet"></i> Ulang</button>
+                  <button class="btn btn-danger btn-sm m-1"><i class="fas fa-trash"></i> Hapus</button>
+                </td>
+              <tr>
+                <td class="display-4">
+                  302
+                </td>
+                <td>
+                  <button class="btn btn-success btn-sm m-1"><i class="fas fa-retweet"></i> Ulang</button>
+                  <button class="btn btn-danger btn-sm m-1"><i class="fas fa-trash"></i> Hapus</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+        
       </div>
     </div>
   </div>
     <!-- /.row -->
 
 </div>
+

@@ -18,6 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <!-- Bootstrap core CSS -->
   <link href="<?=base_url('assets/vendor/bootstrap/css/bootstrap.min.css');?>" rel="stylesheet">
+  <link href="<?=base_url('assets/vendor/bootstrap-social/css/docs.css');?>" rel="stylesheet">
+  <link href="<?=base_url('assets/vendor/bootstrap-social/css/bootstrap-social.css');?>" rel="stylesheet">
   <link href="<?=base_url('assets/vendor/fontawesome/css/all.min.css');?>" rel="stylesheet">
 
   <!-- Custom styles for this template -->
@@ -27,4 +29,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?=base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
   <script src="<?=base_url('assets/vendor/fontawesome/js/all.min.js');?>"></script>
   <script src="<?=base_url('assets/vendor/printThis/printThis.js');?>" type="text/javascript"></script>
+  <script src="<?=base_url('assets/vendor/bootstrap-social/js/docs.js');?>"></script>
 </head>
