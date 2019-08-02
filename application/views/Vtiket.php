@@ -8,16 +8,16 @@
 
 ?>
 
-<div class="container mt-5 d-print-none">
+<div class="container my-auto d-print-none">
   <div class="row">
-    <div class="col-sm-9 col-md-7 col-lg-6 col-xl-5 mx-auto">
-      <div class="card card-signin my-5">
-        <div class="card-header text-center" style="font-size: 40px;font-weight: bold;width: 100%;">Tiket Antrian RSOS</div>
+    <div class="col-sm-9 col-md-6 col-lg-5 col-xl-5 mx-auto">
+      <div class="card card-signin my-2">
+        <div class="card-header text-center display-4" style="font-size: 30px;font-weight: bold;width: 100%;">Tiket Antrian RSOS</div>
         <div class="card-body">          
-          <div id="loket1" class="text-center nomor" style="font-size: 200px;font-weight: bold;width: 100%;"><?=$urut;?></div>
+          <div id="tiket" class="text-center nomor" style="font-size: 150px;font-weight: bold;width: 100%;"><?=$urut;?></div>
         </div>
         <div class="card-footer">
-          <button id="ambil" class="btn btn-lg btn-warning btn-block text-uppercase"><i class="fas fa-ticket-alt fa-4x mr-2"></i><br> Ambil Tiket</button>
+          <button id="ambil" class="btn btn-lg btn-warning btn-block text-uppercase"><i class="fas fa-ticket-alt fa-3x"></i><br> Ambil Tiket</button>
         </div>
       </div>
     </div>
