@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="row">
             <div class="col-md-6 px-1 py-4 my-auto">
               <div class="card bg-warning m-auto mh-100 display-3 text-white text-center" >
-                <?=$antrian ? $antrian:'0';?>
+                <?=$jmlantri ? $jmlantri:'0';?>
               </div>
             </div>
             <div class="col-md-6 px-1 py-4 my-auto">      
@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="card-footer text-center">
           <form action="<?=base_url('Loket/panggil');?>" method="POST">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-volume-up"></i> Panggil Selanjutnya</button>
+            <button type="submit" class="btn btn-primary" <?=$currnum ? 'disabled':'';?>><i class="fas fa-volume-up"></i> Panggil Selanjutnya</button>
           </form>
         </div>
       </div>
@@ -43,14 +43,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="row d-flex justify-content-center">
            <div class="col-md-10 px-1 py-4 ">      
               <div class="card bg-info m-auto mh-100 display-3 text-white text-center">
-                <?=$currnum ? $currnum:'';?>
+                <?=$currnum ? $currnum:'X';?>
               </div>
             </div>
           </div>
         </div>
-        <div class="card-footer text-center">
-          <button class="btn btn-primary"><i class="fas fa-volume-up"></i> Ulangi</button>
-          <button class="btn btn-danger"><i class="fas fa-door-open"></i> Selesai</button>
+        <div class="card-footer text-center px-2">
+          <form action="<?=base_url('Loket/callopt');?>" method="POST">
+            <input type="hidden" value="<?"
+            <button type="submit" name="recall" class="btn btn-primary"><i class="fas fa-volume-up"></i> Ulangi</button>
+            <button type="submit" name="skip" class="btn btn-warning"><i class="fas fa-share-square"></i> Lewati</button>
+            <button type="submit" name="done" class="btn btn-danger"><i class="fas fa-door-open"></i> Selesai</button>
+          </form>
         </div>
       </div>
     </div>  

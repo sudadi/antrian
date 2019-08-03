@@ -27,12 +27,12 @@ class Loket extends CI_Controller {
 	{
       $data['page'] = 'Vloket';
       $data['nav'] = true;
-      $data['content']['antrian']= $this->Mantrian->getantrijml()->jml;
+      $data['content']['jmlantri']= $this->Mantrian->getantrijml()->jml;
       $data['content']['sisa']= $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'),'status'=> 0])->jml;
       if($this->Mantrian->getnumber('asc', "tgl=date('now', 'localtime') and (status=2 or status=1)")){
-        $currnum = $this->Mantrian->getnumber('asc', "tgl=date('now', 'localtime') and (status=2 or status=1)")->urut;
+        $currnum = $this->Mantrian->getnumber('asc', "tgl=date('now', 'localtime') and (status=2 or status=1)");
       } else {
-        $currnum = 'X';
+        $currnum = '';
       }
       $data['content']['currnum']= $currnum;
       $data['content']['skip']= $this->Mantrian->getantrian(['tgl'=> date('Y-m-d'), 'status'=>3]);
@@ -49,5 +49,16 @@ class Loket extends CI_Controller {
       //echo $this->db->last_query().$urut; die();
     }
     redirect('Loket');
+  }
+  
+  public function callopt() {
+    if ($this->input->post('recall')){
+      $status = 1;
+    } else if ($this->input->post('skip')){
+      $status = 3;
+    } else if ($this->input->post('done')){
+      $status = 4;
+    }
+    $this->Mantrian->updnumber(['status'=>$status],['id'=>$this->input->post('id')]);
   }
 }
