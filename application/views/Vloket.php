@@ -5,6 +5,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+$idantri = $btnpanggil = $btnskip = $btncurrent ='';
+
+if ($current) {
+  $currnum = $current->urut;
+  $idantri = $current->id;
+  $btnpanggil = "disabled";
+  $btnskip ="disabled";
+} else {
+  $currnum = "X";
+  $btncurrent = "disabled";
+}
 
 ?>
 
@@ -30,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="card-footer text-center">
           <form action="<?=base_url('Loket/panggil');?>" method="POST">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-volume-up"></i> Panggil Selanjutnya</button>
+            <button name="call" type="submit" class="btn btn-primary" <?=$btnpanggil;?>><i class="fas fa-volume-up"></i> Panggil Selanjutnya</button>
           </form>
         </div>
       </div>
@@ -49,8 +60,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
         <div class="card-footer text-center">
-          <button class="btn btn-primary"><i class="fas fa-volume-up"></i> Ulangi</button>
-          <button class="btn btn-danger"><i class="fas fa-door-open"></i> Selesai</button>
+          <form action="<?=base_url('Loket/callopt');?>" method="POST">
+            <input type="hidden" name="id" value="<?=$idantri;?>">
+            <input type="button" name="recall" class="btn btn-primary" <?=$btncurrent;?> value="Ulangi">
+            <input type="submit" name="skip" class="btn btn-warning" <?=$btncurrent;?> value="Lompati">
+            <input type="submit" name="done" class="btn btn-danger" <?=$btncurrent;?> value="Selesai">
+          </form>
         </div>
       </div>
     </div>  
