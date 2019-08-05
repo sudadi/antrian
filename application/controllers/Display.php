@@ -56,4 +56,8 @@ class Display extends CI_Controller {
     } 
     
   }
+  
+  public function xgetvideo() {
+    
+  }
 }

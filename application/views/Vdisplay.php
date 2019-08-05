@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="row">
     <div class="d-none d-xl-block col-xl-1"></div>
     <div class="col-8 col-xl-7">
-      <video src="<?php echo base_url();?>assets/video/Profil-1.mp4" width="100%" muted loop controls autoplay class="img-fluid rounded"></video>
+      <video id="myvideo" src="<?php echo base_url();?>assets/video/Profil-1.mp4" width="100%" muted controls class="img-fluid rounded"></video>
       <div class="card">
         <div class="card-body">          
           <h2 class="text-center">Informasi Antrian RSOS</h2>
@@ -95,5 +95,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     };
     
     loopdata();
+    
+    var myvid = document.getElementById('myvideo');
+    var myvids = [
+      "<?php echo base_url();?>assets/video/Profil-1.mp4", 
+      "<?php echo base_url();?>assets/video/Profil-2.mp4"
+      ];
+    var activeVideo = 0;
+    myvid.play();
+    
+    myvid.addEventListener('ended', function(e) {
+      // update the active video index
+      activeVideo = (++activeVideo) % myvids.length;
+
+      // update the video source and play
+      myvid.src = myvids[activeVideo];
+      myvid.play();
+    });
+    
   });
 </script>

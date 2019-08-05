@@ -30,11 +30,11 @@ class Loket extends CI_Controller {
       $data['content']['jmlantri']= $this->Mantrian->getantrijml()->jml;
       $data['content']['sisa']= $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'),'status'=> 0])->jml;
       if($this->Mantrian->getnumber('asc', "tgl=date('now', 'localtime') and (status=2 or status=1)")){
-        $currnum = $this->Mantrian->getnumber('asc', "tgl=date('now', 'localtime') and (status=2 or status=1)");
+        $current = $this->Mantrian->getnumber('asc', "tgl=date('now', 'localtime') and (status=2 or status=1)");
       } else {
-        $currnum = '';
+        $current = '';
       }
-      $data['content']['currnum']= $currnum;
+      $data['content']['current']= $current;
       $data['content']['skip']= $this->Mantrian->getantrian(['tgl'=> date('Y-m-d'), 'status'=>3]);
       $data['content']['selesai']= $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'),'status'=>4])->jml;
       $this->load->view('Vmain', $data);
@@ -46,19 +46,21 @@ class Loket extends CI_Controller {
     } else {
       $urut = $this->Mantrian->getnumber('asc',['tgl'=>date('Y-m-d'),'status'=>0])->urut;
       $this->Mantrian->updnumber(['status'=>1],['tgl'=>date('Y-m-d'),'urut'=>$urut]);
-      //echo $this->db->last_query().$urut; die();
     }
     redirect('Loket');
   }
   
   public function callopt() {
-    if ($this->input->post('recall')){
+    //$id = $this->input->post('id');
+    if ($id = $this->input->post('recall')) {
       $status = 1;
-    } else if ($this->input->post('skip')){
+    } else if ($id = $this->input->post('skip')) {
       $status = 3;
-    } else if ($this->input->post('done')){
+    } else if ($id = $this->input->post('done')) {
       $status = 4;
     }
-    $this->Mantrian->updnumber(['status'=>$status],['id'=>$this->input->post('id')]);
+    $this->Mantrian->updnumber(['status'=>$status],['id'=>$id]);
+    //echo $this->db->last_query(); die();
+    redirect('Loket');
   }
 }

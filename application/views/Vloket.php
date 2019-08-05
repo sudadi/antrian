@@ -5,6 +5,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+$idantri = $btnpanggil = $btnskip = $btncurrent ='';
+
+if ($current) {
+  $currnum = $current->urut;
+  $idantri = $current->id;
+  $btnpanggil = "disabled";
+  $btnskip ="disabled";
+} else {
+  $currnum = "X";
+  $btncurrent = "disabled";
+}
 
 ?>
 
@@ -30,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="card-footer text-center">
           <form action="<?=base_url('Loket/panggil');?>" method="POST">
-            <button type="submit" class="btn btn-primary" <?=$currnum ? 'disabled':'';?>><i class="fas fa-volume-up"></i> Panggil Selanjutnya</button>
+            <button name="call" type="submit" class="btn btn-primary" <?=$btnpanggil;?>><i class="fas fa-volume-up"></i> Panggil Selanjutnya</button>
           </form>
         </div>
       </div>
@@ -50,10 +61,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="card-footer text-center px-2">
           <form action="<?=base_url('Loket/callopt');?>" method="POST">
-            <input type="hidden" value="<?"
-            <button type="submit" name="recall" class="btn btn-primary"><i class="fas fa-volume-up"></i> Ulangi</button>
-            <button type="submit" name="skip" class="btn btn-warning"><i class="fas fa-share-square"></i> Lewati</button>
-            <button type="submit" name="done" class="btn btn-danger"><i class="fas fa-door-open"></i> Selesai</button>
+            <button type="submit" name="recall" class="btn btn-primary" <?=$btncurrent;?> value="<?=$idantri;?>"><i class="fas fa-retweet"></i> Ulangi</button> 
+            <button type="submit" name="skip" class="btn btn-warning" <?=$btncurrent;?> value="<?=$idantri;?>"><i class="fas fa-share-square"></i> Lewati</button>
+            <button type="submit" name="done" class="btn btn-danger" <?=$btncurrent;?> value="<?=$idantri;?>"><i class="fas fa-door-open"></i> Selesai</button>
           </form>
         </div>
       </div>
@@ -72,8 +82,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <?=$row->urut;?>
                 </td>
                 <td class="" style="width:50%">
-                  <button class="btn btn-info btn-sm m-1"><i class="fas fa-retweet"></i> Ulangi</button>
-                  <button class="btn btn-danger btn-sm m-1"><i class="fas fa-door-open"></i> Selesai</button>
+                  <form action="<?=base_url('Loket/callopt');?>" method="POST">
+                    <button name="recall" class="btn btn-info btn-sm m-1" <?=$btnpanggil;?> value="<?=$row->id;?>"><i class="fas fa-retweet"></i> Ulangi</button>
+                    <button name="done" class="btn btn-danger btn-sm m-1" <?=$btnpanggil;?> value="<?=$row->id;?>"><i class="fas fa-door-open"></i> Selesai</button>
+                  </form>
                 </td>
               </tr>
               <?php } ?>
@@ -88,3 +100,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </div>
 
+<script>
+  setTimeout(function(){
+   window.location.reload(1);
+}, 15000);
+</script>
