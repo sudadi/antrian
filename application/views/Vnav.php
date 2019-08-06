@@ -1,5 +1,5 @@
 <?php
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,19 +15,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Dashboard
+          <li class="nav-item">
+            <a class="nav-link" href="<?=base_url('loket');?>"><i class="fas fa-tachometer-alt"></i> Dashboard
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Antrian</a>
+            <a class="nav-link" href="<?=base_url('loket/antrian');?>"><i class="fas fa-list-ol"></i> Antrian</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Report</a>
+            <a class="nav-link" href="<?=base_url('loket/setting');?>"><i class="fas fa-user-cog"></i> Setting</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">User</a>
+            <a class="nav-link" href="#"><i class="fas fa-user-lock"></i> Log-Out</a>
           </li>
         </ul>
       </div>

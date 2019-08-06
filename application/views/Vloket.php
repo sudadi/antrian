@@ -84,7 +84,7 @@ if ($current) {
                 <td class="" style="width:50%">
                   <form action="<?=base_url('Loket/callopt');?>" method="POST">
                     <button name="recall" class="btn btn-info btn-sm m-1" <?=$btnpanggil;?> value="<?=$row->id;?>"><i class="fas fa-retweet"></i> Ulangi</button>
-                    <button name="done" class="btn btn-danger btn-sm m-1" <?=$btnpanggil;?> value="<?=$row->id;?>"><i class="fas fa-door-open"></i> Selesai</button>
+                    <button name="cancel" class="btn btn-danger btn-sm m-1" <?=$btnpanggil;?> value="<?=$row->id;?>"><i class="fas fa-sign-out-alt"></i> Batal</button>
                   </form>
                 </td>
               </tr>
