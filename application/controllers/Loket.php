@@ -20,6 +20,11 @@ class Loket extends CI_Controller {
 	 */
   function __construct() {
     parent:: __construct();
+    
+      if ($this->session->userdata('usrmsk')==NULL) {
+        redirect('Auth/login');
+      } 
+      
     $this->load->model('Mantrian');
   }
   
@@ -81,4 +86,6 @@ class Loket extends CI_Controller {
     $data['content'] = '';
     $this->load->view('Vmain', $data);
   }
+  
+  
 }
