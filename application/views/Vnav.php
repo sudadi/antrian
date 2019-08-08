@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a class="nav-link" href="<?=base_url('loket/setting');?>"><i class="fas fa-user-cog"></i> Setting</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-user-lock"></i> Log-Out</a>
+            <a class="nav-link" href="<?=base_url('Auth/logout');?>"><i class="fas fa-user-lock"></i> Log-Out</a>
           </li>
         </ul>
       </div>

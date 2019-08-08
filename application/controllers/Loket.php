@@ -24,8 +24,9 @@ class Loket extends CI_Controller {
       if ($this->session->userdata('usrmsk')==NULL) {
         redirect('Auth/login');
       } 
-      
+    $this->load->library('form_validation');  
     $this->load->model('Mantrian');
+    $this->load->model('Msetting');
   }
   
   public function index()
@@ -83,9 +84,14 @@ class Loket extends CI_Controller {
   {
     $data['page'] = 'Vsetting';
     $data['nav'] = true;
-    $data['content'] = '';
+    $data['content']['users'] = $this->Msetting->getalluser('1=1');
     $this->load->view('Vmain', $data);
   }
   
-  
+  public function setuser() {
+    if ($this->input->post('edit') == '0') {
+      $this->Msetting->adduser();
+    }
+    redirect('Loket/setting');
+  }
 }

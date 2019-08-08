@@ -56,11 +56,13 @@ body {
   margin-bottom: 1rem;
 }
 
+.form-label-group>select,
 .form-label-group input {
   height: auto;
-  border-radius: 2rem;
+  border-radius: 1rem;
 }
 
+.form-label-group>select,
 .form-label-group>input,
 .form-label-group>label {
   padding: var(--input-padding-y) var(--input-padding-x);

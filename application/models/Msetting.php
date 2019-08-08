@@ -13,6 +13,31 @@ class Msetting extends CI_Model {
     
   }
   
+  function login($username, $password){
+    $this->db->from('users');
+    $this->db->where('username', $username);
+//    $this->db->where('status', 1);
+    $qry = $this->db->get();
+    if ($qry->num_rows() == 1) { 
+      if (password_verify($password, trim($qry->row()->password))) {
+        return $qry->row(); 
+      }
+    }
+  }
   
+  function adduser() {
+    $passhash = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+    $record = [
+        'nama'=> $this->input->post('nama'),
+        'username'=> $this->input->post('username'),
+        'password'=>$passhash,
+        'loket'=>$this->input->post('loket')];
+    if ($this->db->insert('users',$record)) {
+      return $this->db->affected_rows();
+    }
+  }
   
+  function getalluser($where) {
+    return $this->db->get_where('users', $where)->result();
+  }
 }
