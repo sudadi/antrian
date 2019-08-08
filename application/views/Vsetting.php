@@ -9,8 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div class="container-fluid">
-  <div class="row  m-5">
-    <div class="col-6">
+  <div class="row my-2">
+    <div class="col-md-6 my-2">
       <div class="card">
         <div class="card-header">
           <h3>Setting Pengguna</h3>
@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-md-6  my-2">
       <div class="card">
         <div class="card-header">
           <h3>Setting Video Display</h3>

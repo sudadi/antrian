@@ -9,19 +9,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
 
-<div class="container-fluid mt-0 mx-5 mx-lg-0">
+<div class="container-fluid mt-0  mx-lg-0">
   <div class="row">
-    <div class="d-none d-xl-block col-xl-1"></div>
-    <div class="col-8 col-xl-7">
-      <video id="myvideo" src="<?php echo base_url();?>assets/video/Profil-1.mp4" width="100%" muted controls class="img-fluid rounded"></video>
-      <div class="card">
+    <div class="col-lg-8 col-xl-7">
+      <video id="myvideo" src="<?php echo base_url();?>assets/video/Profil-1.mp4" width="100%" muted controls></video>
+      <div class="card mb-2">
         <div class="card-body">          
           <h2 class="text-center">Informasi Antrian RSOS</h2>
         <?php //echo date('l').' '.date('d F Y').' '.date('H:m:i');?>
         </div>
       </div>
     </div>
-    <div class="col-4 col-xl-3">
+    <div class="col-lg-4 col-xl-3">
       <div class="card">
         <h3 class="card-header bg-warning text-center" ><strong>ANTRIAN</strong></h3>
         <div class="card-body">
@@ -31,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <h3><strong>LOKET 1</strong></h3>
         </div>
       </div>
-      <div class="card mt-2">
+      <div class="card my-2">
         <h3 class="card-header bg-warning text-center" ><strong>ANTRIAN</strong></h3>
         <div class="card-body">
           <div id="loket2" class="text-center" style="font-size: 60px;width: 100%;"><strong>0</strong></div>
