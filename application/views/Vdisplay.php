@@ -9,9 +9,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
 
-<div class="container-fluid mt-0  mx-lg-0">
+<div class="container-fluid mt-0 mx-lg-0">
   <div class="row">
-    <div class="col-lg-8 col-xl-7">
+    <div class="col-lg-8 col-xl-7 mx-xl-auto">
       <video id="myvideo" src="<?php echo base_url();?>assets/video/Profil-1.mp4" width="100%" muted controls></video>
       <div class="card mb-2">
         <div class="card-body">          
@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
       </div>
     </div>
-    <div class="col-lg-4 col-xl-3">
+    <div class="col-lg-4 col-xl-3 mx-xl-auto">
       <div class="card">
         <h3 class="card-header bg-warning text-center" ><strong>ANTRIAN</strong></h3>
         <div class="card-body">

@@ -50,7 +50,7 @@ class Display extends CI_Controller {
       //echo json_encode($antrian);
       
       if ($this->Mantrian->updnumber(['status'=>2],['id'=>$antrian->id]) > 0) {
-        $antrian->terbilang = 'alertin nomor '.$terbilang.' '.$loket.' alertout';
+        $antrian->terbilang = 'alertin1 nomor '.$terbilang.' '.$loket.' alertout1';
         echo json_encode($antrian);
       }
     } 

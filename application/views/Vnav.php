@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Antrian Loket</a>
+      <a class="navbar-brand" href="#">Loket Antrian</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a class="nav-link" href="<?=base_url('loket/setting');?>"><i class="fas fa-user-cog"></i> Setting</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?=base_url('Auth/logout');?>"><i class="fas fa-user-lock"></i> Log-Out</a>
+            <a class="nav-link" href="<?=base_url('Auth/logout');?>"><i class="fas fa-user-lock"></i> Log-Out ( <?=$this->session->userdata('username');?> )</a>
           </li>
         </ul>
       </div>

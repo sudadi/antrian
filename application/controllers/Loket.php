@@ -43,8 +43,8 @@ class Loket extends CI_Controller {
     $data['nav'] = true;
     $data['content']['jmlantri']= $this->Mantrian->getantrijml()->jml;
     $data['content']['sisa']= $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'),'status'=> 0])->jml;
-    if($this->Mantrian->getnumber('asc', "tgl=date('now', 'localtime') and (status=2 or status=1)")){
-      $current = $this->Mantrian->getnumber('asc', "tgl=date('now', 'localtime') and (status=2 or status=1)");
+    if($this->Mantrian->getnumber('asc', "tgl=date('now', 'localtime') and (status=2 or status=1) and loket={$this->session->userdata('loket')}")){
+      $current = $this->Mantrian->getnumber('asc', "tgl=date('now', 'localtime') and (status=2 or status=1) and loket={$this->session->userdata('loket')}");
     } else {
       $current = '';
     }
@@ -59,7 +59,7 @@ class Loket extends CI_Controller {
       $this->Mantrian->updnumber(['status'=>1],['id'=>$ulang]);
     } else {
       $urut = $this->Mantrian->getnumber('asc',['tgl'=>date('Y-m-d'),'status'=>0])->urut;
-      $this->Mantrian->updnumber(['status'=>1],['tgl'=>date('Y-m-d'),'urut'=>$urut]);
+      $this->Mantrian->updnumber(['status'=>1,'loket'=>$this->session->userdata('loket')],['tgl'=>date('Y-m-d'),'urut'=>$urut]);
     }
     redirect('Loket/antrian');
   }
@@ -75,8 +75,9 @@ class Loket extends CI_Controller {
       } else if ($id = $this->input->post('cancel')) {
         $status = 5;
       }
-      $this->Mantrian->updnumber(['status'=>$status],['id'=>$id]);
+      $this->Mantrian->updnumber(['status'=>$status,'loket'=>$this->session->userdata('loket')],['id'=>$id]);
     }
+    
     redirect('Loket/antrian');
   }
   
@@ -90,8 +91,16 @@ class Loket extends CI_Controller {
   
   public function setuser() {
     if ($this->input->post('edit') == '0') {
-      $this->Msetting->adduser();
+      $this->Msetting->adduser(0);
+    } else {
+      $this->Msetting->adduser($this->input->post('edit'));
     }
     redirect('Loket/setting');
+  }
+  
+  public function xgetalluser($id=null) {
+    if ($id) {
+      echo json_encode($this->Msetting->getalluser(['id'=>$id]));
+    }
   }
 }

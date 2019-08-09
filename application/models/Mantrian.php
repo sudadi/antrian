@@ -33,7 +33,7 @@ class Mantrian extends CI_Model {
     } else {
       $newnumber = $this->getnumber()->urut+1;
     }
-    return $this->db->insert('antrian', ['tgl'=> date('Y-m-d'),'urut'=>$newnumber,'status'=>0]);
+    return $this->db->insert('antrian', ['tgl'=> date('Y-m-d'),'urut'=>$newnumber,'status'=>0,'loket'=>$this->session->userdata('loket')]);
   }
   
   function updnumber($set, $where) {

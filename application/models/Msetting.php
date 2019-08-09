@@ -25,16 +25,19 @@ class Msetting extends CI_Model {
     }
   }
   
-  function adduser() {
+  function adduser($edit) {
     $passhash = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
     $record = [
         'nama'=> $this->input->post('nama'),
         'username'=> $this->input->post('username'),
         'password'=>$passhash,
         'loket'=>$this->input->post('loket')];
-    if ($this->db->insert('users',$record)) {
-      return $this->db->affected_rows();
+    if (!$edit){
+      $this->db->insert('users',$record);
+    } else {      
+      $this->db->update('users',$record,['id'=>$edit]);
     }
+    return $this->db->affected_rows();
   }
   
   function getalluser($where) {
