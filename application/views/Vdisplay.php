@@ -11,32 +11,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="container-fluid mt-0 mx-lg-0">
   <div class="row">
-    <div class="col-lg-8 col-xl-7 mx-xl-auto">
-      <video id="myvideo" src="<?php echo base_url();?>assets/video/Profil-1.mp4" width="100%" muted controls></video>
-      <div class="card mb-2">
+    <div class="col-lg-9 col-xl-9 mb-lg-2 mx-xl-auto text-center">
+       <div class="card bg-success text-white">
         <div class="card-body">          
           <h2 class="text-center">Informasi Antrian RSOS</h2>
         <?php //echo date('l').' '.date('d F Y').' '.date('H:m:i');?>
         </div>
       </div>
-    </div>
-    <div class="col-lg-4 col-xl-3 mx-xl-auto">
-      <div class="card">
-        <h3 class="card-header bg-warning text-center" ><strong>ANTRIAN</strong></h3>
+      <div class="card text-center bg-dark">
         <div class="card-body">
-          <div id="loket1" class="text-center" style="font-size: 60px;width: 100%;"><strong>0</strong></div>          
-        </div>
-        <div class="card-footer text-center bg-warning">
-            <h3><strong>LOKET 1</strong></h3>
+      <video id="myvideo" src="<?php echo base_url();?>assets/video/Profil-1.mp4" width="90%" muted controls></video>
+      </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xl-3 mx-xl-auto">
+      <div class="card">
+        <h3 class="card-header bg-warning text-center" ><strong>Cutomer Service</strong></h3>
+        <div class="card-body">
+          <div id="loket0" class="text-center" style="font-size: 60px;width: 100%;"><strong>0</strong></div>          
         </div>
       </div>
-      <div class="card my-2">
-        <h3 class="card-header bg-warning text-center" ><strong>ANTRIAN</strong></h3>
+      <div class="card my-5">
+        <h3 class="card-header bg-warning text-center" ><strong>LOKET 1</strong></h3>
         <div class="card-body">
-          <div id="loket2" class="text-center" style="font-size: 60px;width: 100%;"><strong>0</strong></div>
+          <div id="loket1" class="text-center" style="font-size: 60px;width: 100%;"><strong>0</strong></div>
         </div>
-        <div class="card-footer text-center bg-warning">
-            <h3><strong>LOKET 2</strong></h3>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 col-xl-3 mx-xl-auto">
+      <div class="card">
+        <h3 class="card-header bg-warning text-center" ><strong>LOKET 2</strong></h3>
+        <div class="card-body">
+          <div id="loket2" class="text-center" style="font-size: 60px;width: 100%;"><strong>0</strong></div>          
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xl-3 mx-xl-auto">
+      <div class="card">
+        <h3 class="card-header bg-warning text-center" ><strong>LOKET 3</strong></h3>
+        <div class="card-body">
+          <div id="loket3" class="text-center" style="font-size: 60px;width: 100%;"><strong>0</strong></div>          
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xl-3 mx-xl-auto">
+      <div class="card">
+        <h3 class="card-header bg-warning text-center" ><strong>LOKET 4</strong></h3>
+        <div class="card-body">
+          <div id="loket4" class="text-center" style="font-size: 60px;width: 100%;"><strong>0</strong></div>          
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xl-3 mx-xl-auto">
+      <div class="card">
+        <h3 class="card-header bg-warning text-center" ><strong>LOKET 5</strong></h3>
+        <div class="card-body">
+          <div id="loket5" class="text-center" style="font-size: 60px;width: 100%;"><strong>0</strong></div>          
         </div>
       </div>
     </div>
@@ -67,12 +99,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         success: function(data)
         {          
           x = -1;
-          if (data.loket === 2) {
-            $("#loket2").html(data.urut);
-          } else {
-            $("#loket1").html(data.urut);
-          }
-
+          $("#loket"+data.loket).html(data.urut);
+          
           var textarr = data.terbilang.split(" ");
           console.log(textarr);
           for(var i=0; i < textarr.length; i++) {
