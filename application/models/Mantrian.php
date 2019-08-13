@@ -13,25 +13,25 @@ class Mantrian extends CI_Model {
     
   }
   
-  function getantrian($where) {
+  function getantrian($where=null) {
     return $this->db->get_where('antrian', $where)->result();
   }
   
-  function getantrijml($where="tgl = date('now','localtime')") {
+  function getantrijml($where=null) {
     $this->db->select('count(id) as jml');
     return $this->db->get_where('antrian', $where)->row();
   }
     
-  function getnumber($order='desc', $where ="tgl = date('now','localtime')") {
+  function getnumber($order='desc', $where=null) {
     $this->db->order_by('urut', $order);
     return $this->db->get_where("antrian", $where, 1)->row();
   }
   
   function addnumber() {
-    if(!$this->getnumber()){
+    if(!$this->getnumber('desc',['tgl'=>date('Y-m-d')])){
       $newnumber = 1;
     } else {
-      $newnumber = $this->getnumber()->urut+1;
+      $newnumber = $this->getnumber('desc',['tgl'=>date('Y-m-d')])->urut+1;
     }
     return $this->db->insert('antrian', ['tgl'=> date('Y-m-d'),'urut'=>$newnumber,'status'=>0,'loket'=>$this->session->userdata('loket')]);
   }

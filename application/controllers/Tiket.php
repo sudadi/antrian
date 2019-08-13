@@ -28,7 +28,7 @@ class Tiket extends CI_Controller {
 	{
       $data['page'] = 'Vtiket';
       $data['nav']= false;
-      if (!($number = $this->Mantrian->getnumber())) {
+      if (!($number = $this->Mantrian->getnumber('desc',['tgl'=>date('Y-m-d')]))) {
         $number =['urut'=>0];
       } 
       $data['content'] = $number;
@@ -38,7 +38,7 @@ class Tiket extends CI_Controller {
     
     public function xgetnomor() {
       if ($this->Mantrian->addnumber()){
-        echo json_encode($this->Mantrian->getnumber());
+        echo json_encode($this->Mantrian->getnumber('desc',['tgl'=>date('Y-m-d')]));
       } else {
         return FALSE;
       }

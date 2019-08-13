@@ -10,7 +10,7 @@
 
 <div class="container my-auto d-print-none">
   <div class="row">
-    <div class="col-sm-9 col-md-6 col-lg-5 col-xl-5 mx-auto">
+    <div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 mx-auto">
       <div class="card card-signin my-2">
         <div class="card-header text-center display-4" style="font-size: 30px;font-weight: bold;width: 100%;">Tiket Antrian CS</div>
         <div class="card-body">          

@@ -37,14 +37,10 @@ class Display extends CI_Controller {
   public function xdispnum() {
     if ($antrian = $this->Mantrian->getnumber('asc', ['tgl'=> date('Y-m-d'), 'status'=>1])) {
       $terbilang = trim(penyebut($antrian->urut));
-      switch ($antrian->loket) {
-        case 2:
-          $loket = 'loket2';
-          break;
-
-        default:
-          $loket = 'loket1';
-          break;
+      if ($antrian->loket == 0) {
+        $loket = 'loketcs';
+      } else {
+          $loket = 'loket'.$antrian->loket;
       }
       
       //echo json_encode($antrian);
