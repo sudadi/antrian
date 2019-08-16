@@ -23,21 +23,21 @@ class Display extends CI_Controller {
     parent:: __construct();
     $this->load->helper('Terbilang');
     $this->load->model('Mantrian');
-    
+    $this->load->model('Msetting');
   }
   
   public function index()
 	{
 	  $data['page'] = 'Vdisplay';
       $data['nav']= FALSE;
-      $data['content'] = '';
+      $data['content']['loket'] = $this->Msetting->getloket('1=1');
       $this->load->view('Vmain', $data);
   }
     
   public function xdispnum() {
     if ($antrian = $this->Mantrian->getnumber('asc', ['tgl'=> date('Y-m-d'), 'status'=>1])) {
       $terbilang = trim(penyebut($antrian->urut));
-      if ($antrian->loket == 0) {
+      if ($antrian->loket == 1) {
         $loket = 'loketcs';
       } else {
           $loket = 'loket'.$antrian->loket;

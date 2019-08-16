@@ -43,4 +43,8 @@ class Msetting extends CI_Model {
   function getalluser($where) {
     return $this->db->get_where('users', $where)->result();
   }
+  
+  function getloket($where) {
+    return $this->db->get_where('loket', $where)->result();
+  }
 }

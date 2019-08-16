@@ -26,17 +26,19 @@ class Tiket extends CI_Controller {
   
   public function index()
 	{
-      $data['page'] = 'Vtiket';
-      $data['nav']= false;
-      for ($i=0; $i<6; $i++) {
-        if (!($number = $this->Mantrian->getnumber('desc',['tgl'=>date('Y-m-d'),'loket'=>$i]))) {
-          $number = new ArrayObject();
-          $number->urut = 0;
-        } 
-        $data['content']['nomer'][$i] = $number;
-      }
-      //echo $data['content']['nomor']; die();
-      $this->load->view('Vmain', $data);
+    $this->load->model('Msetting');
+    $data['content']['tiket'] = $this->Msetting->getloket('1=1');
+    $data['page'] = 'Vtiket';
+    $data['nav']= false;
+    for ($i=1; $i<7; $i++) {
+      if (!($number = $this->Mantrian->getnumber('desc',['tgl'=>date('Y-m-d'),'loket'=>$i]))) {
+        $number = new ArrayObject();
+        $number->urut = 0;
+      } 
+      $data['content']['nomer'][$i] = $number;
+    }
+    //echo $data['content']['nomor']; die();
+    $this->load->view('Vmain', $data);
 	}
     
   public function xgetnomor($loket) {

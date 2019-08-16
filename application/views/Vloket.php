@@ -32,12 +32,9 @@ if ($current) {
                   <?php
                     unset($option);
                     $option[''] = 'Pilih Antrian';
-                    $option[1] = 'Antrian Loket CS';
-                    $option[2] = 'Antrian Loket 1';
-                    $option[3] = 'Antrian Loket 2';
-                    $option[4] = 'Antrian Loket 3';
-                    $option[5] = 'Antrian Loket 4';
-                    $option[6] = 'Antrian Loket 5';
+                    foreach ($loket as $row) {
+                      $option[$row->id] = $row->nmloket;                      
+                    }
                     echo form_dropdown('ddseleq', $option, $seleq, 'class="form-control" id="ddseleq" required');
                   ?>
                 </div>

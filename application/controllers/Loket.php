@@ -41,16 +41,18 @@ class Loket extends CI_Controller {
   {
     if (!($seleq = $this->session->userdata('seleq'))) {
       $seleq = $this->session->userdata('loket');
+      $this->session->set_userdata('seleq',$seleq);
     }
     $data['page'] = 'Vloket';
     $data['nav'] = true;
     $data['content']['seleq'] = $seleq;
+    $data['content']['loket'] = $this->Msetting->getloket('1=1');
     $data['content']['allque']= $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d')])->jml;
     $data['content']['alldone']= $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'),'status <>'=> 0])->jml;
     $data['content']['queue'] = $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'), 'loket'=>$seleq])->jml;
     $data['content']['done'] = $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'),'status <>'=> 0, 'loket'=>$seleq])->jml;
-    if($this->Mantrian->getnumber('asc', "tgl='".date('Y-m-d')."' and (status=2 or status=1) and loket={$this->session->userdata('loket')}")){
-      $current = $this->Mantrian->getnumber('asc', "tgl='".date('Y-m-d')."' and (status=2 or status=1) and loket={$this->session->userdata('loket')}");
+    if($this->Mantrian->getnumber('asc', "tgl='".date('Y-m-d')."' and (status=2 or status=1) and loket={$seleq}")){
+      $current = $this->Mantrian->getnumber('asc', "tgl='".date('Y-m-d')."' and (status=2 or status=1) and loket={$seleq}");
     } else {
       $current = '';
     }
@@ -75,7 +77,7 @@ class Loket extends CI_Controller {
       $this->Mantrian->updnumber(['status'=>1],['id'=>$ulang]);
     } else {
       $urut = $this->Mantrian->getnumber('asc',['tgl'=>date('Y-m-d'),'status'=>0])->urut;
-      $this->Mantrian->updnumber(['status'=>1,'loket'=>$this->session->userdata('loket')],['tgl'=>date('Y-m-d'),'urut'=>$urut]);
+      $this->Mantrian->updnumber(['status'=>1,'loket'=>$this->session->userdata('seleq')],['tgl'=>date('Y-m-d'),'urut'=>$urut]);
     }
     redirect('Loket/antrian');
   }
@@ -91,7 +93,7 @@ class Loket extends CI_Controller {
       } else if ($id = $this->input->post('cancel')) {
         $status = 5;
       }
-      $this->Mantrian->updnumber(['status'=>$status,'loket'=>$this->session->userdata('loket')],['id'=>$id]);
+      $this->Mantrian->updnumber(['status'=>$status,'loket'=>$this->session->userdata('seleq')],['id'=>$id]);
     }
     
     redirect('Loket/antrian');

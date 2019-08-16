@@ -10,11 +10,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <?php $this->load->view('Vhead');?>
-  <body class="d-flex flex-column">
-    <?php ($nav) ? $this->load->view('Vnav'):'';?>
+  <?php $this->load->view('Vhead'); 
+  if ($nav) { ?>
+    <body class="d-flex flex-column withnav">
+    <?php   
+    $this->load->view('Vnav');
+  } else { ?>
+    <body class="d-flex flex-column nonav">
+  <?php } ?>
     <!-- Page Content -->
-    <div id="page-content">
+    <div id="page-content" class="py-0">
         <?php $this->load->view($page, $content);?>
     </div>
     <?php $this->load->view('Vfooter');?>
