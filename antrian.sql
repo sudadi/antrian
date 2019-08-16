@@ -1,39 +1,103 @@
-BEGIN TRANSACTION;
-CREATE TABLE IF NOT EXISTS `users` (
-	`id`	integer PRIMARY KEY AUTOINCREMENT,
-	`nama`	text ( 50 ) NOT NULL,
-	`username`	text ( 20 ) NOT NULL UNIQUE,
-	`password`	TEXT ( 255 ) NOT NULL,
-	`tipe`	INTEGER ( 1 ),
-	`loket`	INTEGER ( 3 ),
-	`lastlog`	TEXT20
-);
-INSERT INTO `users` VALUES (1,'Customer Service 1','loket1','$2y$10$gN5ZqHZQTeEEneBbUft./OIR4tD0kUW8EznSrtDuhHB.5uvyo7OKS',NULL,1,'2019/08/09 01:45:45');
-INSERT INTO `users` VALUES (2,'Customer Service 2','loket2','$2y$10$.wFXxlfz4614MFE9J22i..90PsgPUaXAE7FLO5K3MaVAbQMZY8Z.a',NULL,2,'2019/08/09 10:02:47');
-CREATE TABLE IF NOT EXISTS `antrian` (
-	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	`tgl`	TEXT ( 8 ) NOT NULL,
-	`urut`	INTEGER ( 3 ) NOT NULL,
-	`status`	INTEGER ( 1 ),
-	`loket`	INTEGER ( 2 )
-);
-INSERT INTO `antrian` VALUES (1,'2019-08-06',1,2,NULL);
-INSERT INTO `antrian` VALUES (2,'2019-08-07',1,2,NULL);
-INSERT INTO `antrian` VALUES (3,'2019-08-07',2,0,NULL);
-INSERT INTO `antrian` VALUES (4,'2019-08-07',3,0,NULL);
-INSERT INTO `antrian` VALUES (5,'2019-08-08',1,0,NULL);
-INSERT INTO `antrian` VALUES (6,'2019-08-08',2,0,NULL);
-INSERT INTO `antrian` VALUES (7,'2019-08-08',3,0,NULL);
-INSERT INTO `antrian` VALUES (8,'2019-08-08',4,0,NULL);
-INSERT INTO `antrian` VALUES (9,'2019-08-08',5,0,NULL);
-INSERT INTO `antrian` VALUES (10,'2019-08-08',6,0,NULL);
-INSERT INTO `antrian` VALUES (11,'2019-08-08',7,0,NULL);
-INSERT INTO `antrian` VALUES (12,'2019-08-09',1,3,1);
-INSERT INTO `antrian` VALUES (13,'2019-08-09',2,3,1);
-INSERT INTO `antrian` VALUES (14,'2019-08-09',3,2,2);
-INSERT INTO `antrian` VALUES (15,'2019-08-09',4,4,1);
-INSERT INTO `antrian` VALUES (16,'2019-08-09',5,2,1);
-INSERT INTO `antrian` VALUES (17,'2019-08-09',6,0,1);
-INSERT INTO `antrian` VALUES (18,'2019-08-09',7,0,1);
-INSERT INTO `antrian` VALUES (19,'2019-08-09',8,0,1);
-COMMIT;
+-- phpMyAdmin SQL Dump
+-- version 4.6.6deb5
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: 16 Agu 2019 pada 20.49
+-- Versi Server: 5.7.27-0ubuntu0.18.04.1
+-- PHP Version: 7.2.19-0ubuntu0.18.04.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `antrian`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `antrian`
+--
+
+CREATE TABLE `antrian` (
+  `id` int(11) NOT NULL,
+  `tgl` date NOT NULL,
+  `urut` smallint(4) NOT NULL,
+  `loket` smallint(2) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `antrian`
+--
+
+INSERT INTO `antrian` (`id`, `tgl`, `urut`, `loket`, `status`) VALUES
+(1, '2019-08-14', 1, 1, 0),
+(2, '2019-08-16', 1, 0, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `loket` smallint(2) NOT NULL,
+  `tipe` tinyint(1) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `lastlog` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `nama`, `username`, `password`, `loket`, `tipe`, `status`, `lastlog`) VALUES
+(1, 'Customer Service 1', 'cs1', '$2y$10$gN5ZqHZQTeEEneBbUft./OIR4tD0kUW8EznSrtDuhHB.5uvyo7OKS', 0, 1, 1, '2019-08-16 03:02:25'),
+(2, 'Customer Service 2', 'cs2', '$2y$10$.wFXxlfz4614MFE9J22i..90PsgPUaXAE7FLO5K3MaVAbQMZY8Z.a', 0, 1, 1, '2019-08-13 00:00:00'),
+(3, 'Administrator', 'admin', '$2y$10$.wFXxlfz4614MFE9J22i..90PsgPUaXAE7FLO5K3MaVAbQMZY8Z.a', 0, 0, 1, '2019-08-16 01:33:19');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `antrian`
+--
+ALTER TABLE `antrian`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `antrian`
+--
+ALTER TABLE `antrian`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
