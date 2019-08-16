@@ -39,11 +39,13 @@ class Tiket extends CI_Controller {
       $this->load->view('Vmain', $data);
 	}
     
-    public function xgetnomor($loket) {
-      if ($this->Mantrian->addnumber($loket)){
-        echo json_encode($this->Mantrian->getnumber('desc',['tgl'=>date('Y-m-d'),'loket'=>$loket]));
-      } else {
-        return FALSE;
-      }
+  public function xgetnomor($loket) {
+    if ($this->Mantrian->addnumber($loket) && $this->input->is_ajax_request()) {
+      echo json_encode($this->Mantrian->getnumber('desc',['tgl'=>date('Y-m-d'),'loket'=>$loket]));
+    } else {
+      return FALSE;
     }
+  }
+    
+  
 }

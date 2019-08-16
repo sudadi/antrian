@@ -21,7 +21,70 @@ if ($current) {
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-xs-12 col-lg-6 mt-2">
+      <div class="info-box bg-light" style="min-height: 90px">
+        <div class="info-box-content">
+          <div class="row my-3">
+            <form action="<?=base_url('Loket/seleq');?>" class="form-inline" method="POST">
+              <div class="form-group">
+                <label for="ddseleq" class="control-label">Pilih Antrian</label>
+                <div class="col-6">
+                  <?php
+                    unset($option);
+                    $option[''] = 'Pilih Antrian';
+                    $option[1] = 'Antrian Loket CS';
+                    $option[2] = 'Antrian Loket 1';
+                    $option[3] = 'Antrian Loket 2';
+                    $option[4] = 'Antrian Loket 3';
+                    $option[5] = 'Antrian Loket 4';
+                    $option[6] = 'Antrian Loket 5';
+                    echo form_dropdown('ddseleq', $option, $seleq, 'class="form-control" id="ddseleq" required');
+                  ?>
+                </div>
+                <div class="col-2">
+                  <button name="saveq" class="btn btn-primary">Simpan</button>
+                </div>
+              </div>        
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-3 mt-2">
+      <div class="info-box bg-warning">
+        <span class="info-box-icon text-white"><i class="fab fa-google-plus"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">TOTAL ANTRIAN</span>
+          <span class="info-box-number"><?=$allque ? $allque:'0';?></span>
+
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+            <span class="progress-description">
+              <?=date("Y-m-d");?>
+            </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-3 mt-2">
+      <div class="info-box bg-green">
+        <span class="info-box-icon text-white"><i class="fab fa-google-plus"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">DILAYANI</span>
+          <span class="info-box-number"><?=$alldone ? $alldone:'0';?></span>
+
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+            <span class="progress-description">
+              <?=date("Y-m-d");?>
+            </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-lg-4">
       <!-- Search Widget -->
       <div class="card my-4 mh-100" style="min-height: 300px">
         <h5 class="card-header">Antrian</h5>
@@ -29,12 +92,12 @@ if ($current) {
           <div class="row">
             <div class="col-md-6 px-1 py-4 my-auto">
               <div class="card bg-warning m-auto mh-100 display-3 text-white text-center" >
-                <?=$jmlantri ? $jmlantri:'0';?>
+                <?=$queue ? $queue:'0';?>
               </div>
             </div>
             <div class="col-md-6 px-1 py-4 my-auto">      
               <div class="card bg-success m-auto mh-100 display-3 text-white text-center">
-                <?=$sisa ? $sisa:'0';?>
+                <?=$done ? $done:'0';?>
               </div>
             </div>
           </div>
@@ -46,7 +109,7 @@ if ($current) {
         </div>
       </div>
     </div>  
-    <div class="col-md-4">
+    <div class="col-md-6 col-lg-4">
       <!-- Categories Widget -->
       <div class="card my-4 mh-100" style="min-height: 300px">
         <h5 class="card-header">Dipanggil</h5>
@@ -69,7 +132,7 @@ if ($current) {
       </div>
     </div>  
       <!-- Side Widget -->
-    <div class="col-md-4">
+    <div class="col-md-6 col-lg-4">
       <div class="card my-4 mh-100" style="height:300px">
         <h5 class="card-header">Dilewati</h5>
         <div class="card-body table-responsive">
