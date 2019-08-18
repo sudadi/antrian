@@ -47,4 +47,9 @@ class Msetting extends CI_Model {
   function getloket($where) {
     return $this->db->get_where('loket', $where)->result();
   }
+  
+  function gettiket($where) {
+    return $this->db->get_where('tiket', $where)->result();
+  }
+  
 }

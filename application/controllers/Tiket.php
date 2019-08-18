@@ -27,11 +27,11 @@ class Tiket extends CI_Controller {
   public function index()
 	{
     $this->load->model('Msetting');
-    $data['content']['tiket'] = $this->Msetting->getloket('1=1');
+    $data['content']['tiket'] = $this->Msetting->gettiket('1=1');
     $data['page'] = 'Vtiket';
     $data['nav']= false;
     for ($i=1; $i<7; $i++) {
-      if (!($number = $this->Mantrian->getnumber('desc',['tgl'=>date('Y-m-d'),'loket'=>$i]))) {
+      if (!($number = $this->Mantrian->getnumber('desc',['tgl'=>date('Y-m-d'),'tiket'=>$i]))) {
         $number = new ArrayObject();
         $number->urut = 0;
       } 
@@ -41,9 +41,9 @@ class Tiket extends CI_Controller {
     $this->load->view('Vmain', $data);
 	}
     
-  public function xgetnomor($loket) {
-    if ($this->Mantrian->addnumber($loket) && $this->input->is_ajax_request()) {
-      echo json_encode($this->Mantrian->getnumber('desc',['tgl'=>date('Y-m-d'),'loket'=>$loket]));
+  public function xgetnomor($tiket) {
+    if ($this->Mantrian->addnumber($tiket) && $this->input->is_ajax_request()) {
+      echo json_encode($this->Mantrian->getnumber('desc',['tgl'=>date('Y-m-d'),'tiket'=>$tiket]));
     } else {
       return FALSE;
     }

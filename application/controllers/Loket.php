@@ -76,7 +76,7 @@ class Loket extends CI_Controller {
     if($ulang){
       $this->Mantrian->updnumber(['status'=>1],['id'=>$ulang]);
     } else {
-      $urut = $this->Mantrian->getnumber('asc',['tgl'=>date('Y-m-d'),'status'=>0])->urut;
+      $urut = $this->Mantrian->getnumber('asc',['tgl'=>date('Y-m-d'),'status'=>0, 'loket'=> $this->session->userdata('seleq')])->urut;
       $this->Mantrian->updnumber(['status'=>1,'loket'=>$this->session->userdata('seleq')],['tgl'=>date('Y-m-d'),'urut'=>$urut]);
     }
     redirect('Loket/antrian');
