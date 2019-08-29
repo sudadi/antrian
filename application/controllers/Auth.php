@@ -24,12 +24,15 @@ class Auth extends CI_Controller {
       $result=$this->Msetting->login($username, $password);
       //echo $this->db->last_query(); die();
       if ($result) {
+        $nmloket = $this->Msetting->getloket(['id'=>$result->loket])[0]->nmloket;
         $this->session->set_userdata('usrmsk', 'TRUE');
         $this->session->set_userdata('iduser', $result->id);
         $this->session->set_userdata('username', $result->username);
         $this->session->set_userdata('realname', $result->nama);
         $this->session->set_userdata('tipe', $result->tipe);
         $this->session->set_userdata('loket', $result->loket);
+        $this->session->set_userdata('nmloket', $nmloket);
+        $this->session->set_userdata('piltiket', $result->tiket);
         $this->db->update('users', array('lastlog'=>date('Y/m/d h:i:s')), array('id'=>$result->id));
         redirect('Loket');	
       } else {			

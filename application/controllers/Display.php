@@ -31,18 +31,18 @@ class Display extends CI_Controller {
 	  $data['page'] = 'Vdisplay';
       $data['nav']= FALSE;
       $data['content']['loket'] = $this->Msetting->getloket('1=1');
+      $data['content']['antrian'] = $this->Mantrian->getantrian(['status'=>2]);
       $this->load->view('Vmain', $data);
   }
     
   public function xdispnum() {
     if ($antrian = $this->Mantrian->getnumber('asc', ['tgl'=> date('Y-m-d'), 'status'=>1])) {
       $terbilang = trim(penyebut($antrian->urut));
-      $loket $this->Msetting->getloket();
-      
-      //echo json_encode($antrian);
-      
+      $loket = $this->Msetting->getloket(['id'=>$antrian->loket])[0]->sound;
+      $huruf = $this->Msetting->gettiket(['id'=>$antrian->tiket])[0]->kdhuruf;      
       if ($this->Mantrian->updnumber(['status'=>2],['id'=>$antrian->id]) > 0) {
-        $antrian->terbilang = 'alertin1 nomor '.$terbilang.' '.$loket.' alertout1';
+        $antrian->terbilang = 'alertin1 nomor '.$huruf.' '.$terbilang.' '.$loket.' alertout1';
+        $antrian->huruf = $huruf;
         echo json_encode($antrian);
       }
     } 

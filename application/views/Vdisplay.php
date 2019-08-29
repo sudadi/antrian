@@ -6,7 +6,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+if ($antrian) {
+  foreach ($antrian as $row) {
+    
+  }
+}
 ?>
 
 <div class="container-fluid mt-0 mx-lg-0">
@@ -91,14 +95,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         success: function(data)
         {          
           x = -1;
-          $("#loket"+data.loket).html(data.urut);
+          $("#loket"+data.loket).html(data.huruf+data.urut);
           
           var textarr = data.terbilang.split(" ");
           console.log(textarr);
           for(var i=0; i < textarr.length; i++) {
-
-            audioarr[i] = new Audio("<?=base_url('assets/audio/');?>"+textarr[i]+".ogg");   
-            
+            audioarr[i] = new Audio("<?=base_url('assets/audio/');?>"+textarr[i]+".ogg");               
           };     
           //jika success mainkan audio dan set loop interval lebih lama
           playSnd();          

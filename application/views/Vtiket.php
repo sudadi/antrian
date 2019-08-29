@@ -107,14 +107,14 @@
 </div>
 
 <script>
-  function ambiltiket(loket) {
+  function ambiltiket(tiket) {
     $.ajax({
-      url : "<?php echo site_url('tiket/xgetnomor/')?>"+loket,
+      url : "<?php echo site_url('tiket/xgetnomor/')?>"+tiket,
       type: "GET",
       dataType: "JSON",
       success: function(data)
       {
-        $("#tiket"+loket).html(data.urut);
+        $("#tiket"+tiket).html(data.urut);
         $("#tiket").html(data.urut);
         $('.tiket').printThis({
           printDelay: 500,

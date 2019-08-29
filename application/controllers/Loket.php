@@ -39,35 +39,34 @@ class Loket extends CI_Controller {
   
   public function antrian()
   {
-    if (!($seleq = $this->session->userdata('seleq'))) {
-      $seleq = $this->session->userdata('loket');
-      $this->session->set_userdata('seleq',$seleq);
-    }
+    $piltiket = $this->session->userdata('piltiket');
+    $loket = $this->session->userdata('loket');
     $data['page'] = 'Vloket';
     $data['nav'] = true;
-    $data['content']['seleq'] = $seleq;
-    $data['content']['loket'] = $this->Msetting->getloket('1=1');
+    $data['content']['piltiket'] = $piltiket;
+    $data['content']['kdhuruf'] = $this->Msetting->gettiket(['id'=>$piltiket])[0]->kdhuruf;
+    $data['content']['tiket'] = $this->Msetting->gettiket('1=1');
     $data['content']['allque']= $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d')])->jml;
     $data['content']['alldone']= $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'),'status <>'=> 0])->jml;
-    $data['content']['queue'] = $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'), 'loket'=>$seleq])->jml;
-    $data['content']['done'] = $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'),'status <>'=> 0, 'loket'=>$seleq])->jml;
-    if($this->Mantrian->getnumber('asc', "tgl='".date('Y-m-d')."' and (status=2 or status=1) and loket={$seleq}")){
-      $current = $this->Mantrian->getnumber('asc', "tgl='".date('Y-m-d')."' and (status=2 or status=1) and loket={$seleq}");
+    $data['content']['queue'] = $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'), 'tiket'=>$piltiket])->jml;
+    $data['content']['done'] = $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'),'status <>'=> 0, 'tiket'=>$piltiket])->jml;
+    if($this->Mantrian->getnumber('asc', "tgl='".date('Y-m-d')."' and (status=2 or status=1) and loket={$loket} and tiket={$piltiket}")){
+      $current = $this->Mantrian->getnumber('asc', "tgl='".date('Y-m-d')."' and (status=2 or status=1) and loket={$loket} and tiket={$piltiket}");
     } else {
       $current = '';
     }
+    //echo $this->db->last_query(); die();
     $data['content']['current']= $current;
-    $data['content']['skip']= $this->Mantrian->getantrian(['tgl'=> date('Y-m-d'), 'status'=>3]);
-    $data['content']['selesai']= $this->Mantrian->getantrijml(['tgl'=>date('Y-m-d'),'status'=>4])->jml;
+    $data['content']['skip']= $this->Mantrian->getantrian(['tgl'=> date('Y-m-d'), 'status'=>3, 'tiket'=>$piltiket]);
     $this->load->view('Vmain', $data);
   }
   
   
-  public function seleq() {
+  public function pilihtiket() {
    // echo $this->input->post('ddseleq'); die();
-    if ($seleq = $this->input->post('ddseleq')) {
+    if ($piltiket = $this->input->post('ipiltiket')) {
       //echo $this->input->post('ddseleq'); die();
-      $this->session->set_userdata('seleq', $seleq);
+      $this->session->set_userdata('piltiket', $piltiket);
     }
     redirect('Loket/antrian');
   }
@@ -76,8 +75,8 @@ class Loket extends CI_Controller {
     if($ulang){
       $this->Mantrian->updnumber(['status'=>1],['id'=>$ulang]);
     } else {
-      $urut = $this->Mantrian->getnumber('asc',['tgl'=>date('Y-m-d'),'status'=>0, 'loket'=> $this->session->userdata('seleq')])->urut;
-      $this->Mantrian->updnumber(['status'=>1,'loket'=>$this->session->userdata('seleq')],['tgl'=>date('Y-m-d'),'urut'=>$urut]);
+      $id = $this->Mantrian->getnumber('asc',['tgl'=>date('Y-m-d'),'status'=>0, 'tiket'=> $this->session->userdata('piltiket')])->id;
+      $this->Mantrian->updnumber(['status'=>1,'loket'=>$this->session->userdata('loket')],['tgl'=>date('Y-m-d'),'id'=>$id]);
     }
     redirect('Loket/antrian');
   }
@@ -93,7 +92,7 @@ class Loket extends CI_Controller {
       } else if ($id = $this->input->post('cancel')) {
         $status = 5;
       }
-      $this->Mantrian->updnumber(['status'=>$status,'loket'=>$this->session->userdata('seleq')],['id'=>$id]);
+      $this->Mantrian->updnumber(['status'=>$status,'loket'=>$this->session->userdata('loket')],['id'=>$id]);
     }
     
     redirect('Loket/antrian');

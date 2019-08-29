@@ -25,21 +25,21 @@ if ($current) {
       <div class="info-box bg-light" style="min-height: 90px">
         <div class="info-box-content">
           <div class="row my-3">
-            <form action="<?=base_url('Loket/seleq');?>" class="form-inline" method="POST">
+            <form action="<?=base_url('Loket/pilihtiket');?>" class="form-inline" method="POST">
               <div class="form-group">
-                <label for="ddseleq" class="control-label">Pilih Antrian</label>
+                <label for="ipiltiket" class="control-label">Pilih Antrian</label>
                 <div class="col-6">
                   <?php
                     unset($option);
                     $option[''] = 'Pilih Antrian';
-                    foreach ($loket as $row) {
-                      $option[$row->id] = $row->nmloket;                      
+                    foreach ($tiket as $row) {
+                      $option[$row->id] = $row->nmtiket;                      
                     }
-                    echo form_dropdown('ddseleq', $option, $seleq, 'class="form-control" id="ddseleq" required');
+                    echo form_dropdown('ipiltiket', $option, $piltiket, 'class="form-control" id="ddseleq" required');
                   ?>
                 </div>
                 <div class="col-2">
-                  <button name="saveq" class="btn btn-primary">Simpan</button>
+                  <button name="savepil" class="btn btn-primary">Simpan</button>
                 </div>
               </div>        
             </form>
@@ -114,7 +114,7 @@ if ($current) {
           <div class="row d-flex justify-content-center">
            <div class="col-md-10 px-1 py-4 ">      
               <div class="card bg-info m-auto mh-100 display-3 text-white text-center">
-                <?=$currnum ? $currnum:'X';?>
+                <?=$currnum ? $kdhuruf.$currnum : 'X';?>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@ if ($current) {
               foreach ($skip as $row) { ?>
               <tr>
                 <td class="display-4 text-center">
-                  <?=$row->urut;?>
+                  <?=$kdhuruf.$row->urut;?>
                 </td>
                 <td class="" style="width:50%">
                   <form action="<?=base_url('Loket/callopt');?>" method="POST">
@@ -161,7 +161,7 @@ if ($current) {
 </div>
 
 <script>
-  setTimeout(function(){
-   window.location.reload(1);
-}, 15000);
+//  setTimeout(function(){
+//   window.location.reload(1);
+//}, 5000);
 </script>

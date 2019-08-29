@@ -31,9 +31,9 @@ class Mantrian extends CI_Model {
     if(!$this->getnumber('desc',['tgl'=>date('Y-m-d'), 'tiket'=>$tiket])){
       $newnumber = 1;
     } else {
-      $newnumber = $this->getnumber('desc',['tgl'=>date('Y-m-d'),'loket'=>$tiket])->urut+1;
+      $newnumber = $this->getnumber('desc',['tgl'=>date('Y-m-d'),'tiket'=>$tiket])->urut+1;
     }
-    return $this->db->insert('antrian', ['tgl'=> date('Y-m-d'),'urut'=>$newnumber,'status'=>0,'loket'=>$tiket]);
+    return $this->db->insert('antrian', ['tgl'=> date('Y-m-d'),'urut'=>$newnumber,'status'=>0,'tiket'=>$tiket]);
   }
   
   function updnumber($set, $where) {

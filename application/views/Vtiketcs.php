@@ -23,67 +23,12 @@
   <div class="row">
     <div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 mx-auto">
       <div class="card card-signin my-2">
-        <div class="card-header text-center display-4" style="font-size: 30px;font-weight: bold;width: 100%;">Tiket Antrian <br>CS</div>
+        <div class="card-header text-center"><h2 class="font-weight-bold"><?=$tiket[0]->nmtiket;?></h2></div>
         <div class="card-body">          
-          <div id="tiket0" class="text-center nomor" style="font-size: 100px;font-weight: bold;width: 100%;"><?=$nomer[0]->urut;?></div>
+          <div id="tiket1" class="text-center nomor display-4 font-weight-bold"><?=$nomer[1]->urut;?></div>
         </div>
         <div class="card-footer">
-          <button id="ambil" onclick="ambiltiket(0);" class="btn btn-lg btn-warning btn-block text-uppercase"><i class="fas fa-ticket-alt fa-3x"></i><br> Ambil Tiket</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 mx-auto">
-      <div class="card card-signin my-2">
-        <div class="card-header text-center display-4" style="font-size: 30px;font-weight: bold;width: 100%;">Tiket Antrian <br>Loket 1</div>
-        <div class="card-body">          
-          <div id="tiket1" class="text-center nomor" style="font-size: 100px;font-weight: bold;width: 100%;"><?=$nomer[1]->urut;?></div>
-        </div>
-        <div class="card-footer">
-          <button id="ambil" onclick="ambiltiket(1);" class="btn btn-lg btn-warning btn-block text-uppercase"><i class="fas fa-ticket-alt fa-3x"></i><br> Ambil Tiket</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 mx-auto">
-      <div class="card card-signin my-2">
-        <div class="card-header text-center display-4" style="font-size: 30px;font-weight: bold;width: 100%;">Tiket Antrian <br>Loket 2</div>
-        <div class="card-body">          
-          <div id="tiket2" class="text-center nomor" style="font-size: 100px;font-weight: bold;width: 100%;"><?=$nomer[2]->urut;?></div>
-        </div>
-        <div class="card-footer">
-          <button id="ambil" onclick="ambiltiket(2);" class="btn btn-lg btn-warning btn-block text-uppercase"><i class="fas fa-ticket-alt fa-3x"></i><br> Ambil Tiket</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 mx-auto">
-      <div class="card card-signin my-2">
-        <div class="card-header text-center display-4" style="font-size: 30px;font-weight: bold;width: 100%;">Tiket Antrian <br>Loket 3</div>
-        <div class="card-body">          
-          <div id="tiket3" class="text-center nomor" style="font-size: 100px;font-weight: bold;width: 100%;"><?=$nomer[3]->urut;?></div>
-        </div>
-        <div class="card-footer">
-          <button id="ambil" onclick="ambiltiket(3);" class="btn btn-lg btn-warning btn-block text-uppercase"><i class="fas fa-ticket-alt fa-3x"></i><br> Ambil Tiket</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 mx-auto">
-      <div class="card card-signin my-2">
-        <div class="card-header text-center display-4" style="font-size: 30px;font-weight: bold;width: 100%;">Tiket Antrian <br>Loket 4</div>
-        <div class="card-body">          
-          <div id="tiket4" class="text-center nomor" style="font-size: 100px;font-weight: bold;width: 100%;"><?=$nomer[4]->urut;?></div>
-        </div>
-        <div class="card-footer">
-          <button id="ambil" onclick="ambiltiket(4);" class="btn btn-lg btn-warning btn-block text-uppercase"><i class="fas fa-ticket-alt fa-3x"></i><br> Ambil Tiket</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 mx-auto">
-      <div class="card card-signin my-2">
-        <div class="card-header text-center display-4" style="font-size: 30px;font-weight: bold;width: 100%;">Tiket Antrian <br>Loket 5</div>
-        <div class="card-body">          
-          <div id="tiket5" class="text-center nomor" style="font-size: 100px;font-weight: bold;width: 100%;"><?=$nomer[5]->urut;?></div>
-        </div>
-        <div class="card-footer">
-          <button id="ambil" onclick="ambiltiket(5);" class="btn btn-lg btn-warning btn-block text-uppercase"><i class="fas fa-ticket-alt fa-3x"></i><br> Ambil Tiket</button>
+          <button onclick="ambiltiket(1);" class="btn btn-warning btn-block text-uppercase"><i class="fas fa-ticket-alt fa-3x"></i><br> Ambil Tiket</button>
         </div>
       </div>
     </div>
