@@ -20,12 +20,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?=base_url('loket/antrian');?>"><i class="fas fa-list-ol"></i> Antrian</a>
-          </li>
+          <?php if($this->session->userdata('tipe')==0) { ?>
           <li class="nav-item">
             <a class="nav-link" href="<?=base_url('loket/setting');?>"><i class="fas fa-user-cog"></i> Setting</a>
           </li>
+          <?php } else { ?>
+          <li class="nav-item">
+            <a class="nav-link" href="<?=base_url('loket/antrian');?>"><i class="fas fa-list-ol"></i> Antrian</a>
+          </li>
+          <?php } ?>
           <li class="nav-item">
             <a class="nav-link" href="<?=base_url('Auth/logout');?>"><i class="fas fa-user-lock"></i> Log-Out ( <?=$this->session->userdata('username');?> )</a>
           </li>

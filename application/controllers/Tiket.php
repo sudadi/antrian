@@ -29,7 +29,7 @@ class Tiket extends CI_Controller {
     $this->load->model('Msetting');
     $data['content']['tiket'] = $this->Msetting->gettiket('1=1');
     $data['page'] = 'Vtiket';
-    if ($tipe = 'cs') {
+    if ($tipe === 'cs') {
       $data['page'] = 'Vtiketcs';
     }
     $data['nav']= false;

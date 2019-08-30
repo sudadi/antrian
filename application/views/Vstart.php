@@ -13,9 +13,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="card card-signin my-5">
         <div class="card-body">
           <h5 class="card-title text-center">Antrian RSOS</h5>
-          <a href="<?=base_url('display');?>" class="btn btn-lg btn-primary btn-block text-uppercase" ><i class="fas fa-tv mr-2"></i> DISPLAY</a>
+          <a href="<?=base_url('display');?>" class="btn btn-lg btn-dropbox btn-block text-uppercase" ><i class="fas fa-tv mr-2"></i> DISPLAY</a>
           <a href="<?=base_url('tiket');?>" class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fas fa-ticket-alt mr-2"></i> Tiket Antrian</a>
-          <a href="<?=base_url('loket');?>" class="btn btn-lg btn-facebook btn-block text-uppercase" ><i class="fas fa-store mr-2"></i> Loket</a>
+          <a href="<?=base_url('tiket/index/cs');?>" class="btn btn-lg btn-soundcloud btn-block text-uppercase" type="submit"><i class="fas fa-ticket-alt mr-2"></i> Tiket Antrian CS</a>
+          <a href="<?=base_url('loket');?>" class="btn btn-lg btn-vimeo btn-block text-uppercase" ><i class="fas fa-store mr-2"></i> Loket</a>
           </div>
       </div>
     </div>

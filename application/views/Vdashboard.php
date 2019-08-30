@@ -10,16 +10,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="container-fluid mt-0 mx-lg-0">
   <div class="row">
-    <div class="col-lg-8 col-xl-7">
-      
-    </div>
-    <div class="col-lg-4 col-xl-3">
-      <div class="card">
-        
-      </div>
-      <div class="card mt-2">
-        
-      </div>
-    </div>
+    
   </div>
 </div>
