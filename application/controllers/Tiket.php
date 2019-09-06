@@ -32,7 +32,7 @@ class Tiket extends CI_Controller {
     if ($tipe === 'cs') {
       $data['page'] = 'Vtiketcs';
     }
-    $data['nav']= false;
+    $data['nav']= 'dsp';
     for ($i=1; $i<7; $i++) {
       if (!($number = $this->Mantrian->getnumber('desc',['tgl'=>date('Y-m-d'),'tiket'=>$i]))) {
         $number = new ArrayObject();

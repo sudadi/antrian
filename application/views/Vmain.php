@@ -13,8 +13,12 @@
   <?php $this->load->view('Vhead'); 
   if ($nav) { ?>
     <body class="d-flex flex-column withnav">
-    <?php   
-    $this->load->view('Vnav');
+    <?php  
+    if ($nav === 'dsp') {
+      $this->load->view('Vstickyhead');
+    } else {    
+      $this->load->view('Vnav');
+    }
   } else { ?>
     <body class="d-flex flex-column nonav">
   <?php } ?>

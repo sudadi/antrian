@@ -13,59 +13,93 @@ if ($antrian) {
 }
 ?>
 
-<div class="container-fluid mt-0 mx-lg-0">
+<div class="container-fluid mt-4 pt-4 x-lg-0">
   <div class="row">
     <div class="col-lg-3 col-xl-3 mx-xl-auto">
-      <div class="card">
-        <h3 class="card-header bg-warning text-center" ><strong><?=$loket[0]->nmloket;?></strong></h3>
-        <div class="card-body">
-          <h1 id="loket1" class="text-center font-weight-bold">0</h1>         
+      <div class="info-box bg-dark text-white">
+        <span class="info-box-icon"><i class="fas fa-users"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text"><h1 class="display-4 text-center mt-1" id="loket1" >0</h1</span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+            <span class="progress-description text-center">
+              <h3><strong><?=$loket[0]->nmloket;?></strong></h3>
+            </span>
         </div>
       </div>
-      <div class="card my-4">
-        <h3 class="card-header bg-warning text-center" ><strong><?=$loket[1]->nmloket;?></strong></h3>
-        <div class="card-body">
-          <h1 id="loket2" class="text-center font-weight-bold">0</h1>
+      <div class="info-box bg-secondary  text-white">
+        <span class="info-box-icon"><i class="fas fa-users"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text"><h1 class="display-4 text-center mt-1" id="loket2" >0</h1></span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+            <span class="progress-description text-center">
+              <h3><strong><?=$loket[1]->nmloket;?></strong></h3>
+            </span>
         </div>
       </div>
-      <div class="card my-4">
-        <h3 class="card-header bg-warning text-center" ><strong><?=$loket[2]->nmloket;?></strong></h3>
-        <div class="card-body">
-          <h1 id="loket3" class="text-center font-weight-bold">0</h1>          
+      <div class="info-box bg-dark text-white">
+        <span class="info-box-icon"><i class="fas fa-users"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text"><h1 class="display-4 text-center mt-1" id="loket3" >0</h1></span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+            <span class="progress-description text-center">
+              <h3><strong><?=$loket[2]->nmloket;?></strong></h3>
+            </span>
+        </div>
+      </div>
+      <div class="info-box bg-secondary text-white">
+        <span class="info-box-icon"><i class="fas fa-users"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text"><h1 class="display-4 text-center mt-1" id="loket4" >0</h1></span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+            <span class="progress-description text-center">
+              <h3><strong><?=$loket[3]->nmloket;?></strong></h3>
+            </span>
+        </div>
+      </div>
+      <div class="info-box bg-dark text-white">
+        <span class="info-box-icon"><i class="fas fa-users"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text"><h1 class="display-4 text-center mt-1" id="loket5" >0</h1></span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+            <span class="progress-description text-center">
+              <h3><strong><?=$loket[4]->nmloket;?></strong></h3>
+            </span>
+        </div>
+      </div>
+      <div class="info-box bg-secondary text-white">
+        <span class="info-box-icon"><i class="fas fa-users"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text"><h1 class="display-4 text-center mt-1" id="loket6" >0</h1></span>
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+            <span class="progress-description text-center">
+              <h3><strong><?=$loket[5]->nmloket;?></strong></h3>
+            </span>
         </div>
       </div>
     </div>
-    <div class="col-lg-6 col-xl-6 mb-lg-2 mx-xl-auto text-center">
-       <div class="card bg-danger text-white">
+    <div class="col-lg-8 col-xl-8 mb-lg-2 mx-xl-auto text-center">
+       <div class="card bg-warning">
         <div class="card-body">          
           <h2 class="text-center">Informasi Antrian RSOS</h2>
         <?php //echo date('l').' '.date('d F Y').' '.date('H:m:i');?>
         </div>
       </div>
       <div class="card text-center bg-white">
-        <div class="card-body my-5 p-0">
+        <div class="card-body mt-4 mb-5 p-0">
       <video id="myvideo" src="<?php echo base_url();?>assets/video/Profil-1.mp4" width="100%" muted controls></video>
       </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-xl-3 mx-xl-auto">
-      <div class="card">
-        <h3 class="card-header bg-warning text-center" ><strong><?=$loket[3]->nmloket;?></strong></h3>
-        <div class="card-body">
-          <h1 id="loket4" class="text-center font-weight-bold">0</h1>          
-        </div>
-      </div>
-      <div class="card my-4">
-        <h3 class="card-header bg-warning text-center" ><strong><?=$loket[4]->nmloket;?></strong></h3>
-        <div class="card-body">
-          <h1 id="loket5" class="text-center font-weight-bold">0</h1>          
-        </div>
-      </div>
-      <div class="card my-4">
-        <h3 class="card-header bg-warning text-center" ><strong><?=$loket[5]->nmloket;?></strong></h3>
-        <div class="card-body">
-          <h1 id="loket6" class="text-center font-weight-bold">0</h1>          
-        </div>
       </div>
     </div>
   </div>

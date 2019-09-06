@@ -26,8 +26,31 @@ body {
   background: linear-gradient(to right, #0062E6, #33AEFF);
 }
 
+.sticky-header {
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    border-radius: 0;
+    border: 0;
+    transition: all 0.250s;
+}
+
+.sticky-footer {
+        background: rgba(255,0,0,255);
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        text-align: center;
+        color: #fff;
+        padding: 15px;
+}
+
+
 #sticky-footer {
   flex-shrink: none;
+  position: fixed;
 }
 
 #page-content {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 29 Agu 2019 pada 10.55
+-- Generation Time: 05 Sep 2019 pada 14.30
 -- Versi Server: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -34,32 +34,6 @@ CREATE TABLE `antrian` (
   `loket` smallint(2) DEFAULT NULL,
   `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `antrian`
---
-
-INSERT INTO `antrian` (`id`, `tgl`, `urut`, `tiket`, `loket`, `status`) VALUES
-(1, '2019-08-19', 1, 2, 2, 3),
-(2, '2019-08-19', 1, 1, 1, 2),
-(3, '2019-08-19', 1, 3, 1, 2),
-(4, '2019-08-19', 1, 4, NULL, 0),
-(5, '2019-08-19', 2, 2, 2, 3),
-(6, '2019-08-19', 2, 3, NULL, 0),
-(7, '2019-08-19', 3, 3, NULL, 0),
-(8, '2019-08-19', 3, 2, 2, 2),
-(9, '2019-08-19', 1, 6, NULL, 0),
-(10, '2019-08-19', 1, 5, 5, 3),
-(11, '2019-08-19', 2, 5, 1, 2),
-(12, '2019-08-29', 1, 1, 2, 2),
-(13, '2019-08-29', 1, 2, 2, 2),
-(14, '2019-08-29', 2, 1, 2, 3),
-(15, '2019-08-29', 1, 3, 1, 2),
-(16, '2019-08-29', 2, 3, 2, 3),
-(17, '2019-08-29', 3, 3, 2, 3),
-(18, '2019-08-29', 4, 3, 2, 2),
-(19, '2019-08-29', 3, 1, 2, 3),
-(20, '2019-08-29', 4, 1, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -136,9 +110,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `username`, `password`, `loket`, `tiket`, `tipe`, `status`, `lastlog`) VALUES
-(1, 'Customer Service 1', 'cs1', '$2y$10$gN5ZqHZQTeEEneBbUft./OIR4tD0kUW8EznSrtDuhHB.5uvyo7OKS', 1, 1, 1, 1, '2019-08-29 10:00:20'),
-(2, 'Customer Service 2', 'cs2', '$2y$10$.wFXxlfz4614MFE9J22i..90PsgPUaXAE7FLO5K3MaVAbQMZY8Z.a', 2, 2, 1, 1, '2019-08-29 10:10:49'),
-(3, 'Administrator', 'admin', '$2y$10$.wFXxlfz4614MFE9J22i..90PsgPUaXAE7FLO5K3MaVAbQMZY8Z.a', 0, 0, 0, 1, '2019-08-19 02:09:14');
+(1, 'Administrator', 'admin', '$2y$10$gN5ZqHZQTeEEneBbUft./OIR4tD0kUW8EznSrtDuhHB.5uvyo7OKS', 0, 0, 0, 1, '2019-08-30 01:43:48'),
+(2, 'Customer Service 1', 'informasi', '$2y$10$.wFXxlfz4614MFE9J22i..90PsgPUaXAE7FLO5K3MaVAbQMZY8Z.a', 1, 1, 1, 1, '2019-08-29 10:10:49'),
+(3, 'Pendaftaran-1', 'loket1', '$2y$10$.wFXxlfz4614MFE9J22i..90PsgPUaXAE7FLO5K3MaVAbQMZY8Z.a', 2, 2, 1, 1, '2019-08-30 01:43:18');
 
 --
 -- Indexes for dumped tables
@@ -176,7 +150,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `antrian`
 --
 ALTER TABLE `antrian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `loket`
 --

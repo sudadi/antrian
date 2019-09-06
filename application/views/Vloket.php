@@ -49,7 +49,7 @@ if ($current) {
     </div>
     <div class="col-xs-12 col-md-6 col-lg-3 mt-2">
       <div class="info-box bg-warning">
-        <span class="info-box-icon text-white"><i class="fab fa-google-plus"></i></span>
+        <span class="info-box-icon text-white"><i class="fas fa-users"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">TOTAL ANTRIAN</span>
           <span class="info-box-number"><?=$allque ? $allque:'0';?></span>
@@ -65,7 +65,7 @@ if ($current) {
     </div>
     <div class="col-xs-12 col-md-6 col-lg-3 mt-2">
       <div class="info-box bg-green">
-        <span class="info-box-icon text-white"><i class="fab fa-google-plus"></i></span>
+        <span class="info-box-icon text-white"><i class="fas fa-user-check"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">DILAYANI</span>
           <span class="info-box-number"><?=$alldone ? $alldone:'0';?></span>
@@ -138,8 +138,8 @@ if ($current) {
               <?php
               foreach ($skip as $row) { ?>
               <tr>
-                <td class="display-4 text-center">
-                  <?=$kdhuruf.$row->urut;?>
+                <td class="text-center">
+                  <h2><?=$kdhuruf.$row->urut;?></h2>
                 </td>
                 <td class="" style="width:50%">
                   <form action="<?=base_url('Loket/callopt');?>" method="POST">

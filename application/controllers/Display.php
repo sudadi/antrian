@@ -29,7 +29,7 @@ class Display extends CI_Controller {
   public function index()
 	{
 	  $data['page'] = 'Vdisplay';
-      $data['nav']= FALSE;
+      $data['nav']= 'dsp';
       $data['content']['loket'] = $this->Msetting->getloket('1=1');
       $data['content']['antrian'] = $this->Mantrian->getantrian(['status'=>2]);
       $this->load->view('Vmain', $data);
